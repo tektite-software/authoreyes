@@ -1,5 +1,37 @@
 module Authoreyes
   module Parser
+    # For examples and the modeled data model, see the
+    # README[link:files/README_rdoc.html].
+    #
+    # Also, see role definition methods
+    # * AuthorizationRulesReader#role,
+    # * AuthorizationRulesReader#includes,
+    # * AuthorizationRulesReader#title,
+    # * AuthorizationRulesReader#description
+    #
+    # Methods for rule definition in roles
+    # * AuthorizationRulesReader#has_permission_on,
+    # * AuthorizationRulesReader#to,
+    # * AuthorizationRulesReader#if_attribute,
+    # * AuthorizationRulesReader#if_permitted_to
+    #
+    # Methods to be used in if_attribute statements
+    # * AuthorizationRulesReader#contains,
+    # * AuthorizationRulesReader#does_not_contain,
+    # * AuthorizationRulesReader#intersects_with,
+    # * AuthorizationRulesReader#is,
+    # * AuthorizationRulesReader#is_not,
+    # * AuthorizationRulesReader#is_in,
+    # * AuthorizationRulesReader#is_not_in,
+    # * AuthorizationRulesReader#lt,
+    # * AuthorizationRulesReader#lte,
+    # * AuthorizationRulesReader#gt,
+    # * AuthorizationRulesReader#gte
+    #
+    # And privilege definition methods
+    # * PrivilegesReader#privilege,
+    # * PrivilegesReader#includes
+    #
     class AuthorizationRulesParser
       attr_reader :roles, :role_hierarchy, :auth_rules,
         :role_descriptions, :role_titles, :omnipotent_roles # :nodoc:
@@ -273,7 +305,7 @@ module Authoreyes
         options[:context] ||= attr_or_hash.delete(:context) if attr_or_hash.is_a?(Hash)
         # only :context option in attr_or_hash:
         attr_or_hash = nil if attr_or_hash.is_a?(Hash) and attr_or_hash.empty?
-        @current_rule.append_attribute AttributeWithPermission.new(privilege,
+        @current_rule.append_attribute ::Authoreyes::Authorization::AttributeWithPermission.new(privilege,
             attr_or_hash, options[:context])
       end
 

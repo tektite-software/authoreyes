@@ -19,7 +19,7 @@ module Authoreyes
           reader: nil
         }.merge(options)
         #@auth_rules = AuthorizationRuleSet.new reader.auth_rules_reader.auth_rules
-        @reader = Reader::DSLReader.factory(options[:reader] || AUTH_DSL_FILES)
+        @reader = ::Authoreyes::Parser::DSLParser.factory(options[:reader] || AUTH_DSL_FILES)
       end
 
       def initialize_copy(from) # :nodoc:
