@@ -29,11 +29,11 @@ For Rails authorization in Rails versions 4 and below, please use [Declarative A
 __Warning! This gem is not finished!__ Although authorization functionality _does_ work, you will need to do a few things to actually use it in your application...
 
 At this point, to use Authoreyes, you must do the following:
-1. Add an `authorization_rules.rb` file.
-2. Create an Authoreyes DSL Parser object.
-3. Use the DSL Parser object to parse your authorization rules.
-4. Create an Authoreyes Authorization Engine object passing in the Parser object.
-5. Use the Engine's `permit!` and `permit?` methods in your application.
+  1. Add an `authorization_rules.rb` file.
+  2. Create an Authoreyes DSL Parser object.
+  3. Use the DSL Parser object to parse your authorization rules.
+  4. Create an Authoreyes Authorization Engine object passing in the Parser object.
+  5. Use the Engine's `permit!` and `permit?` methods in your application.
 
 ## Contributing
 
