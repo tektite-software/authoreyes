@@ -1,5 +1,11 @@
 require 'test_helper'
 
+describe Authoreyes::Authorization do
+  describe 'the Authorization engine initialized for Rails' do
+    
+  end
+end
+
 class AuthorizationTest < Minitest::Test
 
   def test_permit
