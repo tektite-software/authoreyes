@@ -62,7 +62,7 @@ class ParserTest < Minitest::Test
 
   def test_auth_role_permit_on
     reader = Authoreyes::Parser::DSLParser.new
-    reader.parse %|
+    reader.parse %(
       authorization do
         role :test_role do
           has_permission_on :test_context do
@@ -71,16 +71,24 @@ class ParserTest < Minitest::Test
           end
         end
       end
-    |
+    )
     assert_equal 1, reader.auth_rules_reader.roles.length
     assert_equal 1, reader.auth_rules_reader.auth_rules.length
-    assert reader.auth_rules_reader.auth_rules[0].matches?(:test_role, [:test_perm], :test_context)
-    assert reader.auth_rules_reader.auth_rules[0].matches?(:test_role, [:manage], :test_context)
+    assert reader.auth_rules_reader.auth_rules[0].matches?(
+      :test_role,
+      [:test_perm],
+      :test_context
+    )
+    assert reader.auth_rules_reader.auth_rules[0].matches?(
+      :test_role,
+      [:manage],
+      :test_context
+    )
   end
 
   def test_permit_block
     reader = Authoreyes::Parser::DSLParser.new
-    reader.parse %|
+    reader.parse %(
       authorization do
         role :test_role do
           has_permission_on :perms, :to => :test do
@@ -97,81 +105,94 @@ class ParserTest < Minitest::Test
           end
         end
       end
-    |
+    )
     assert_equal 1, reader.auth_rules_reader.roles.length
     assert_equal 1, reader.auth_rules_reader.auth_rules.length
-    assert reader.auth_rules_reader.auth_rules[0].matches?(:test_role, [:test], :perms)
+    assert reader.auth_rules_reader.auth_rules[0].matches?(
+      :test_role,
+      [:test],
+      :perms
+    )
   end
 
   def test_has_permission_to_with_context
     reader = Authoreyes::Parser::DSLParser.new
-    reader.parse %|
+    reader.parse %(
       authorization do
         role :test_role do
           has_permission_on :perms, :to => :test
         end
       end
-    |
+    )
     assert_equal 1, reader.auth_rules_reader.roles.length
     assert_equal 1, reader.auth_rules_reader.auth_rules.length
-    assert reader.auth_rules_reader.auth_rules[0].matches?(:test_role, [:test], :perms)
+    assert reader.auth_rules_reader.auth_rules[0].matches?(
+      :test_role,
+      [:test],
+      :perms
+    )
   end
 
   def test_context
     reader = Authoreyes::Parser::DSLParser.new
-    reader.parse %{
+    reader.parse %(
       contexts do
         context :high_level_context do
           includes :low_level_context_1, :low_level_context_2
         end
       end
-    }
+    )
   end
 
   def test_dsl_error
     reader = Authoreyes::Parser::DSLParser.new
     assert_raises(Authoreyes::Parser::DSLError) do
-      reader.parse %{
+      reader.parse %(
         authorization do
           includes :lesser_role
         end
-      }
+      )
     end
   end
 
   def test_syntax_error
     reader = Authoreyes::Parser::DSLParser.new
     assert_raises(Authoreyes::Parser::DSLSyntaxError) do
-      reader.parse %{
+      reader.parse %(
         authorizations do
         end
-      }
+      )
     end
   end
 
   def test_syntax_error_2
     reader = Authoreyes::Parser::DSLParser.new
     assert_raises(Authoreyes::Parser::DSLSyntaxError) do
-      reader.parse %{
+      reader.parse %(
         authorizations
         end
-      }
+      )
     end
   end
 
   def test_factory_returns_self
     reader = Authoreyes::Parser::DSLParser.new
-    assert_equal(Authoreyes::Parser::DSLParser.factory(reader).object_id, reader.object_id)
+    assert_equal(
+      Authoreyes::Parser::DSLParser.factory(reader).object_id,
+      reader.object_id
+    )
   end
 
   def test_factory_loads_file
-    reader = Authoreyes::Parser::DSLParser.factory(( "/authorization_rules.dist.rb").to_s)
+    reader = Authoreyes::Parser::DSLParser.factory(
+      '/authorization_rules.dist.rb'
+    )
     assert_equal(Authoreyes::Parser::DSLParser, reader.class)
   end
 
   def test_load_file_not_found
     assert_raises(Authoreyes::Parser::DSLFileNotFoundError) do
-      Authoreyes::Parser::DSLParser.new.load!("nonexistent_file.rb")
+      Authoreyes::Parser::DSLParser.new.load!('nonexistent_file.rb')
     end
   end
 end

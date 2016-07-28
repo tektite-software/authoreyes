@@ -32,6 +32,7 @@ module Authoreyes
     # Controller-independent method for retrieving the current user.
     # Needed for model security where the current controller is not available.
     def self.current_user
+      # TODO: get rid of Thread usage
       Thread.current['current_user'] || AnonymousUser.new
     end
 

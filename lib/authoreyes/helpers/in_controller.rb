@@ -6,6 +6,18 @@ module Authoreyes
     # conditions are met, according to the defined Authorization Rules.
     module InController
 
+      ApplicationController.send(:define_method, :redirect_if_unauthorized) do
+        puts 'before_filter called eyeyey!'
+        puts params
+        puts request['authoreyes.authorized?']
+        if params[:authorized?] == false
+          redirect_back fallback_path: root_path, alert: 'You are not allowed to do that.', status: 403
+        end
+      end
+
+      ApplicationController.send :before_filter, :redirect_if_unauthorized
+
+      # TODO: Implement this!
       def filter_resource_access(options = {})
 
       end
@@ -44,7 +56,7 @@ module Authoreyes
       end
 
       # Create hash of options to be used with ENGINE's permit methods
-      def options_for_permit (object_or_sym = nil, options = {}, bang = true)
+      def options_for_permit(object_or_sym = nil, options = {}, bang = true)
         context = object = nil
         if object_or_sym.nil?
           context = self.class.decl_auth_context

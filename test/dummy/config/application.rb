@@ -4,6 +4,7 @@ require 'rails/all'
 
 Bundler.require(*Rails.groups)
 require "authoreyes"
+require "devise"
 
 module Dummy
   class Application < Rails::Application
@@ -12,4 +13,3 @@ module Dummy
     # -- all .rb files in that directory are automatically loaded.
   end
 end
-

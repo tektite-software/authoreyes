@@ -3,6 +3,9 @@ module Authoreyes
   # as a constant during the rails initialization.  Middleware is also
   # configured here.
   class Railtie < Rails::Railtie
+    # Error for bad configuration
+    class InvalidConfigurationOption < StandardError; end
+
     # Allow users to configure Authoreyes in an initializer file
     # +auth_rules_file+ is the path of the authorization rules file.
     config.authoreyes = ActiveSupport::OrderedOptions.new
@@ -12,6 +15,13 @@ module Authoreyes
       default_options = ActiveSupport::OrderedOptions.new
       default_options.auth_rules_file =
         File.path("#{Rails.root}/config/authorization_rules.rb")
+      default_options.mode = :whitelist
+
+      # Validates options
+      unless [nil, :whitelist, :blacklist].include? config.authoreyes.mode
+        raise InvalidConfigurationOption,
+          "Unrecognized mode.  Valid options are :whitelist and :blacklist"
+      end
 
       # Merge user options with defaults
       config.authoreyes = default_options.merge(config.authoreyes)
