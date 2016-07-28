@@ -1,0 +1,7 @@
+group :development do
+  gem 'byebug'
+end
+
+gem 'authoreyes', path: '../..'
+gem 'devise'
+gem 'sqlite3'
