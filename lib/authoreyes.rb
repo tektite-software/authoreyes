@@ -11,7 +11,7 @@ module Authoreyes
       require 'authoreyes/helpers/in_controller'
 
       # Include Controller helpers
-      ActionController::Base.extend Authoreyes::Helpers::InController
+      ActionController::Base.include Authoreyes::Helpers::InController
     end
   end
 end

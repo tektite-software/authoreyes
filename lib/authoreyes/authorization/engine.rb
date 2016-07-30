@@ -89,6 +89,11 @@ module Authoreyes
                     privilege.flatten.collect { |priv| priv.to_sym } :
                     privilege.to_sym
 
+        # Convert context to symbol as well
+        unless options[:context].nil?
+          options[:context] = options[:context].to_sym
+        end
+
         #
         # If the object responds to :proxy_reflection, we're probably working with
         # an association proxy.  Use 'new' to leverage ActiveRecord's builder

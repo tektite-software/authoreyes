@@ -7,7 +7,21 @@ ENV['RAILS_ENV'] = 'test'
 require File.expand_path('../../test/dummy/config/environment.rb', __FILE__)
 ActiveRecord::Migrator.migrations_paths =
   [File.expand_path('../../test/dummy/db/migrate', __FILE__)]
+
 require 'rails/test_help'
+require 'minitest/autorun'
+require 'minitest/spec'
+require 'minitest/rails'
+require 'minitest/rails/capybara'
+require 'minitest/reporters'
+
+require 'support/factory_girl'
+require 'support/devise'
+
+Minitest::Reporters.use! [
+  # Minitest::Reporters::SpecReporter.new,
+  Minitest::Reporters::DefaultReporter.new
+]
 
 # Filter out Minitest backtrace while allowing backtrace from other libraries
 # to be shown.
@@ -26,14 +40,27 @@ if ActiveSupport::TestCase.respond_to?(:fixture_path=)
   ActiveSupport::TestCase.fixtures :all
 end
 
+class ActionDispatch::IntegrationTest
+  # Make the Capybara DSL available in all integration tests
+  include Capybara::DSL
+
+  # Reset sessions and driver between tests
+  # Use super wherever this method is redefined in your individual test classes
+  def teardown
+    Capybara.reset_sessions!
+    Capybara.use_default_driver
+  end
+end
+
 # Allow signing in of test users with devise
 ApplicationController.allow_forgery_protection = false
 
-require 'minitest/autorun'
-require 'minitest/pride'
+ActionDispatch::IntegrationTest.extend Minitest::Spec::DSL
+Minitest::Unit::TestCase.include Capybara::DSL
+Minitest::Spec.include Capybara::DSL
 
 # Because it makes sense, and it's what I've always wanted
-class Minitest
+module Minitest
   class Spec
     class << self
       alias the it
@@ -71,7 +98,7 @@ class MockDataObject
 
   def self.find_or_initialize_by(args)
     raise StandardError,
-          'Syntax error: find_or_initialize by expects a hash:
+          'Syntax error: find_or_`initialize by expects a hash:
           User.find_or_initialize_by(:id => @user.id)' unless args.is_a?(Hash)
     new id: args[:id]
   end

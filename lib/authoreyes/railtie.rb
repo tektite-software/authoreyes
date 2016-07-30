@@ -27,6 +27,14 @@ module Authoreyes
       config.authoreyes = default_options.merge(config.authoreyes)
     end
 
+    # Controller integration
+    initializer 'authoreyes.in_controller' do |app|
+      ActiveSupport.on_load :action_controller do
+        before_action :redirect_if_unauthorized
+        after_action :set_unauthorized_status_code
+      end
+    end
+
     # Set up the Authoreyes ENGINE
     initializer 'authoreyes.engine' do |app|
       config.before_initialize do

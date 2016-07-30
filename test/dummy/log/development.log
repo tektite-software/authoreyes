@@ -9437,3 +9437,1045 @@ rack (2.0.1) lib/rack/handler/webrick.rb:86:in `service'
   Rendered /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (60.6ms)
 DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from <module:InController> at /Users/xavier/OneDrive/Documents/Dev/ruby/authoreyes/lib/authoreyes/helpers/in_controller.rb:18)
 DEPRECATION WARNING: before_filter is deprecated and will be removed in Rails 5.1. Use before_action instead. (called from <module:InController> at /Users/xavier/OneDrive/Documents/Dev/ruby/authoreyes/lib/authoreyes/helpers/in_controller.rb:18)
+  [1m[36mUser Load (1.3ms)[0m  [1m[34mSELECT "users".* FROM "users"[0m
+  [1m[36mRole Load (0.5ms)[0m  [1m[34mSELECT "roles".* FROM "roles"[0m
+  [1m[36mTestModel Load (8.0ms)[0m  [1m[34mSELECT "test_models".* FROM "test_models"[0m
+Started GET "/" for ::1 at 2016-07-29 12:21:45 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TestModelsController#index as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :redirect_if_unauthorized rendered or redirected
+Completed 403 Forbidden in 19ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-07-29 12:21:46 -0500
+Processing by TestModelsController#index as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :redirect_if_unauthorized rendered or redirected
+Completed 403 Forbidden in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-07-29 12:21:50 -0500
+Processing by TestModelsController#index as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :redirect_if_unauthorized rendered or redirected
+Completed 403 Forbidden in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-07-29 12:22:12 -0500
+Processing by Devise::SessionsController#new as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :redirect_if_unauthorized rendered or redirected
+Completed 403 Forbidden in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-07-29 12:23:46 -0500
+Processing by Devise::SessionsController#new as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :redirect_if_unauthorized rendered or redirected
+Completed 403 Forbidden in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-07-29 12:24:19 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Devise::SessionsController#new as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :redirect_if_unauthorized rendered or redirected
+Completed 403 Forbidden in 19ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-07-29 12:24:34 -0500
+Processing by TestModelsController#index as HTML
+Redirected to http://localhost:3000/users/sign_in
+Filter chain halted as :redirect_if_unauthorized rendered or redirected
+Completed 403 Forbidden in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-07-30 12:23:57 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TestModelsController#index as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :redirect_if_unauthorized rendered or redirected
+Completed 403 Forbidden in 20ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/users/sign_in" for ::1 at 2016-07-30 12:24:11 -0500
+Processing by Devise::SessionsController#new as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :redirect_if_unauthorized rendered or redirected
+Completed 403 Forbidden in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-07-30 12:24:26 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TestModelsController#index as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :redirect_if_unauthorized rendered or redirected
+Completed 403 Forbidden in 650217ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-07-30 12:35:41 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TestModelsController#index as HTML
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mRole Load (0.5ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.2ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mCACHE (0.0ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+Redirected to http://localhost:3000/
+Filter chain halted as :redirect_if_unauthorized rendered or redirected
+Completed 403 Forbidden in 492157ms (ActiveRecord: 7.3ms)
+
+
+Started GET "/" for ::1 at 2016-07-30 12:44:03 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TestModelsController#index as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :redirect_if_unauthorized rendered or redirected
+Completed 403 Forbidden in 3561ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-07-30 12:44:11 -0500
+Processing by TestModelsController#index as HTML
+Completed 500 Internal Server Error in 309795ms (ActiveRecord: 0.0ms)
+
+
+  
+SystemExit (exit):
+  
+(byebug):1:in `exit'
+(byebug):1:in `redirect_if_unauthorized'
+byebug (9.0.5) lib/byebug/helpers/eval.rb:59:in `eval'
+byebug (9.0.5) lib/byebug/helpers/eval.rb:59:in `safe_eval'
+byebug (9.0.5) lib/byebug/helpers/eval.rb:53:in `warning_eval'
+byebug (9.0.5) lib/byebug/helpers/eval.rb:29:in `block in multiple_thread_eval'
+byebug (9.0.5) lib/byebug/helpers/eval.rb:92:in `allowing_other_threads'
+byebug (9.0.5) lib/byebug/helpers/eval.rb:29:in `multiple_thread_eval'
+byebug (9.0.5) lib/byebug/processors/command_processor.rb:164:in `block in run_cmd'
+byebug (9.0.5) lib/byebug/processors/command_processor.rb:169:in `safely'
+byebug (9.0.5) lib/byebug/processors/command_processor.rb:160:in `run_cmd'
+byebug (9.0.5) lib/byebug/processors/command_processor.rb:134:in `repl'
+byebug (9.0.5) lib/byebug/processors/command_processor.rb:98:in `process_commands'
+byebug (9.0.5) lib/byebug/processors/command_processor.rb:56:in `at_line'
+byebug (9.0.5) lib/byebug/context.rb:96:in `at_line'
+/Users/xavier/OneDrive/Documents/Dev/ruby/authoreyes/lib/authoreyes/helpers/in_controller.rb:22:in `redirect_if_unauthorized'
+activesupport (5.0.0) lib/active_support/callbacks.rb:382:in `block in make_lambda'
+activesupport (5.0.0) lib/active_support/callbacks.rb:169:in `block (2 levels) in halting'
+actionpack (5.0.0) lib/abstract_controller/callbacks.rb:12:in `block (2 levels) in <module:Callbacks>'
+activesupport (5.0.0) lib/active_support/callbacks.rb:170:in `block in halting'
+activesupport (5.0.0) lib/active_support/callbacks.rb:454:in `block in call'
+activesupport (5.0.0) lib/active_support/callbacks.rb:454:in `each'
+activesupport (5.0.0) lib/active_support/callbacks.rb:454:in `call'
+activesupport (5.0.0) lib/active_support/callbacks.rb:101:in `__run_callbacks__'
+activesupport (5.0.0) lib/active_support/callbacks.rb:750:in `_run_process_action_callbacks'
+activesupport (5.0.0) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.0) lib/abstract_controller/callbacks.rb:19:in `process_action'
+actionpack (5.0.0) lib/action_controller/metal/rescue.rb:20:in `process_action'
+actionpack (5.0.0) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+activesupport (5.0.0) lib/active_support/notifications.rb:164:in `block in instrument'
+activesupport (5.0.0) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.0.0) lib/active_support/notifications.rb:164:in `instrument'
+actionpack (5.0.0) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+actionpack (5.0.0) lib/action_controller/metal/params_wrapper.rb:248:in `process_action'
+activerecord (5.0.0) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+actionpack (5.0.0) lib/abstract_controller/base.rb:126:in `process'
+actionview (5.0.0) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.0.0) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (5.0.0) lib/action_controller/metal.rb:262:in `dispatch'
+actionpack (5.0.0) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (5.0.0) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.0.0) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.0) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.0) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.0) lib/action_dispatch/routing/route_set.rb:725:in `call'
+warden (1.2.6) lib/warden/manager.rb:35:in `block in call'
+warden (1.2.6) lib/warden/manager.rb:34:in `catch'
+warden (1.2.6) lib/warden/manager.rb:34:in `call'
+rack (2.0.1) lib/rack/etag.rb:25:in `call'
+rack (2.0.1) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.1) lib/rack/head.rb:12:in `call'
+rack (2.0.1) lib/rack/session/abstract/id.rb:222:in `context'
+rack (2.0.1) lib/rack/session/abstract/id.rb:216:in `call'
+actionpack (5.0.0) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.0) lib/active_record/migration.rb:552:in `call'
+actionpack (5.0.0) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.0) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.0) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.0) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.0) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.0) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+actionpack (5.0.0) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.1.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.0) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0) lib/rails/engine.rb:522:in `call'
+rack (2.0.1) lib/rack/handler/webrick.rb:86:in `service'
+/Users/xavier/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+/Users/xavier/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+/Users/xavier/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+  Rendering /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (95.0ms)
+  Rendering /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (19.0ms)
+  Rendering /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.6ms)
+  Rendered /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (177.1ms)
+Started GET "/" for ::1 at 2016-07-30 12:49:35 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TestModelsController#index as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :redirect_if_unauthorized rendered or redirected
+Completed 403 Forbidden in 2819ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-07-30 12:49:45 -0500
+Processing by TestModelsController#index as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :redirect_if_unauthorized rendered or redirected
+Completed 403 Forbidden in 5ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-07-30 12:49:53 -0500
+Processing by TestModelsController#index as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :redirect_if_unauthorized rendered or redirected
+Completed 403 Forbidden in 5ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-07-30 12:50:16 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TestModelsController#index as HTML
+Redirected to http://localhost:3000/
+Filter chain halted as :redirect_if_unauthorized rendered or redirected
+Completed 403 Forbidden in 32643ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-07-30 12:50:58 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TestModelsController#index as HTML
+  Rendering test_models/index.html.erb within layouts/application
+  [1m[36mTestModel Load (0.9ms)[0m  [1m[34mSELECT "test_models".* FROM "test_models"[0m
+  Rendered test_models/index.html.erb within layouts/application (25.4ms)
+Completed 200 OK in 2414ms (Views: 333.2ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/test_models/1/edit" for ::1 at 2016-07-30 12:55:57 -0500
+Processing by TestModelsController#edit as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://localhost:3000/
+Filter chain halted as :redirect_if_unauthorized rendered or redirected
+Completed 403 Forbidden in 8620ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/test_models/1/edit" for ::1 at 2016-07-30 12:59:18 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TestModelsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  Rendering test_models/index.html.erb within layouts/application
+  Rendered test_models/index.html.erb within layouts/application (14.2ms)
+Completed 500 Internal Server Error in 2355ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    13:   </thead>
+    14: 
+    15:   <tbody>
+    16:     <% @test_models.each do |test_model| %>
+    17:       <tr>
+    18:         <td><%= test_model.title %></td>
+    19:         <td><%= test_model.body %></td>
+  
+app/views/test_models/index.html.erb:16:in `_app_views_test_models_index_html_erb__4361165968757048287_70357453954480'
+  Rendering /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.3ms)
+  Rendering /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendering /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (51.0ms)
+Started GET "/test_models/1/edit" for ::1 at 2016-07-30 12:59:54 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TestModelsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  Rendering test_models/index.html.erb within layouts/application
+  Rendered test_models/index.html.erb within layouts/application (15.6ms)
+Completed 500 Internal Server Error in 2270ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    13:   </thead>
+    14: 
+    15:   <tbody>
+    16:     <% @test_models.each do |test_model| %>
+    17:       <tr>
+    18:         <td><%= test_model.title %></td>
+    19:         <td><%= test_model.body %></td>
+  
+app/views/test_models/index.html.erb:16:in `_app_views_test_models_index_html_erb___4058415366710862723_70359730181160'
+  Rendering /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.2ms)
+  Rendering /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendering /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (44.6ms)
+Started GET "/test_models/1/edit" for ::1 at 2016-07-30 13:00:20 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TestModelsController#edit as HTML
+  Parameters: {"id"=>"1"}
+DEPRECATION WARNING: `redirect_to :back` is deprecated and will be removed from Rails 5.1. Please use `redirect_back(fallback_location: fallback_location)` where `fallback_location` represents the location to use if the request has no HTTP referer information. (called from redirect_if_unauthorized at /Users/xavier/OneDrive/Documents/Dev/ruby/authoreyes/lib/authoreyes/helpers/in_controller.rb:23)
+Redirected to http://localhost:3000/
+Filter chain halted as :redirect_if_unauthorized rendered or redirected
+Completed 403 Forbidden in 2472ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/test_models/1/edit" for ::1 at 2016-07-30 13:01:32 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TestModelsController#edit as HTML
+  Parameters: {"id"=>"1"}
+DEPRECATION WARNING: `redirect_to :back` is deprecated and will be removed from Rails 5.1. Please use `redirect_back(fallback_location: fallback_location)` where `fallback_location` represents the location to use if the request has no HTTP referer information. (called from redirect_if_unauthorized at /Users/xavier/OneDrive/Documents/Dev/ruby/authoreyes/lib/authoreyes/helpers/in_controller.rb:23)
+Redirected to http://localhost:3000/
+Filter chain halted as :redirect_if_unauthorized rendered or redirected
+Completed 302 Found in 2232ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-07-30 13:01:34 -0500
+Processing by TestModelsController#index as HTML
+  Rendering test_models/index.html.erb within layouts/application
+  [1m[36mTestModel Load (0.4ms)[0m  [1m[34mSELECT "test_models".* FROM "test_models"[0m
+  Rendered test_models/index.html.erb within layouts/application (10.0ms)
+Completed 200 OK in 6277ms (Views: 249.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/" for ::1 at 2016-07-30 13:05:28 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TestModelsController#index as HTML
+  Rendering test_models/index.html.erb within layouts/application
+  [1m[36mTestModel Load (0.4ms)[0m  [1m[34mSELECT "test_models".* FROM "test_models"[0m
+  Rendered test_models/index.html.erb within layouts/application (14.3ms)
+Completed 200 OK in 213ms (Views: 192.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/test_models/1/edit" for ::1 at 2016-07-30 13:05:30 -0500
+Processing by TestModelsController#edit as HTML
+  Parameters: {"id"=>"1"}
+DEPRECATION WARNING: `redirect_to :back` is deprecated and will be removed from Rails 5.1. Please use `redirect_back(fallback_location: fallback_location)` where `fallback_location` represents the location to use if the request has no HTTP referer information. (called from redirect_if_unauthorized at /Users/xavier/OneDrive/Documents/Dev/ruby/authoreyes/lib/authoreyes/helpers/in_controller.rb:22)
+Redirected to http://localhost:3000/
+Filter chain halted as :redirect_if_unauthorized rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-07-30 13:05:30 -0500
+Processing by TestModelsController#index as HTML
+  Rendering test_models/index.html.erb within layouts/application
+  [1m[36mTestModel Load (0.3ms)[0m  [1m[34mSELECT "test_models".* FROM "test_models"[0m
+  Rendered test_models/index.html.erb within layouts/application (2.1ms)
+Completed 200 OK in 18ms (Views: 15.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2016-07-30 13:06:51 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TestModelsController#index as HTML
+  Rendering test_models/index.html.erb within layouts/application
+  [1m[36mTestModel Load (0.2ms)[0m  [1m[34mSELECT "test_models".* FROM "test_models"[0m
+  Rendered test_models/index.html.erb within layouts/application (10.6ms)
+Completed 200 OK in 222ms (Views: 199.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/test_models/1/edit" for ::1 at 2016-07-30 13:06:53 -0500
+Processing by TestModelsController#edit as HTML
+  Parameters: {"id"=>"1"}
+DEPRECATION WARNING: `redirect_to :back` is deprecated and will be removed from Rails 5.1. Please use `redirect_back(fallback_location: fallback_location)` where `fallback_location` represents the location to use if the request has no HTTP referer information. (called from redirect_if_unauthorized at /Users/xavier/OneDrive/Documents/Dev/ruby/authoreyes/lib/authoreyes/helpers/in_controller.rb:22)
+Redirected to http://localhost:3000/
+Filter chain halted as :redirect_if_unauthorized rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-07-30 13:06:53 -0500
+Processing by TestModelsController#index as HTML
+  Rendering test_models/index.html.erb within layouts/application
+  [1m[36mTestModel Load (0.3ms)[0m  [1m[34mSELECT "test_models".* FROM "test_models"[0m
+  Rendered test_models/index.html.erb within layouts/application (2.3ms)
+Completed 200 OK in 18ms (Views: 15.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/test_models/1" for ::1 at 2016-07-30 13:06:56 -0500
+Processing by TestModelsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTestModel Load (0.1ms)[0m  [1m[34mSELECT  "test_models".* FROM "test_models" WHERE "test_models"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering test_models/show.html.erb within layouts/application
+  Rendered test_models/show.html.erb within layouts/application (0.8ms)
+Completed 200 OK in 23ms (Views: 14.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/test_models" for ::1 at 2016-07-30 13:07:04 -0500
+Processing by TestModelsController#index as HTML
+  Rendering test_models/index.html.erb within layouts/application
+  [1m[36mTestModel Load (0.1ms)[0m  [1m[34mSELECT "test_models".* FROM "test_models"[0m
+  Rendered test_models/index.html.erb within layouts/application (1.7ms)
+Completed 200 OK in 16ms (Views: 14.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/test_models/1" for ::1 at 2016-07-30 13:07:06 -0500
+Processing by TestModelsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTestModel Load (0.1ms)[0m  [1m[34mSELECT  "test_models".* FROM "test_models" WHERE "test_models"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering test_models/show.html.erb within layouts/application
+  Rendered test_models/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 16ms (Views: 13.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/test_models/1/edit" for ::1 at 2016-07-30 13:07:07 -0500
+Processing by TestModelsController#edit as HTML
+  Parameters: {"id"=>"1"}
+DEPRECATION WARNING: `redirect_to :back` is deprecated and will be removed from Rails 5.1. Please use `redirect_back(fallback_location: fallback_location)` where `fallback_location` represents the location to use if the request has no HTTP referer information. (called from redirect_if_unauthorized at /Users/xavier/OneDrive/Documents/Dev/ruby/authoreyes/lib/authoreyes/helpers/in_controller.rb:22)
+Redirected to http://localhost:3000/test_models/1
+Filter chain halted as :redirect_if_unauthorized rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/test_models/1" for ::1 at 2016-07-30 13:07:07 -0500
+Processing by TestModelsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTestModel Load (0.1ms)[0m  [1m[34mSELECT  "test_models".* FROM "test_models" WHERE "test_models"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering test_models/show.html.erb within layouts/application
+  Rendered test_models/show.html.erb within layouts/application (0.7ms)
+Completed 200 OK in 17ms (Views: 14.5ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/test_models/1/edit" for ::1 at 2016-07-30 13:07:09 -0500
+Processing by TestModelsController#edit as HTML
+  Parameters: {"id"=>"1"}
+DEPRECATION WARNING: `redirect_to :back` is deprecated and will be removed from Rails 5.1. Please use `redirect_back(fallback_location: fallback_location)` where `fallback_location` represents the location to use if the request has no HTTP referer information. (called from redirect_if_unauthorized at /Users/xavier/OneDrive/Documents/Dev/ruby/authoreyes/lib/authoreyes/helpers/in_controller.rb:22)
+Redirected to http://localhost:3000/test_models/1
+Filter chain halted as :redirect_if_unauthorized rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/test_models/1" for ::1 at 2016-07-30 13:07:09 -0500
+Processing by TestModelsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTestModel Load (0.1ms)[0m  [1m[34mSELECT  "test_models".* FROM "test_models" WHERE "test_models"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering test_models/show.html.erb within layouts/application
+  Rendered test_models/show.html.erb within layouts/application (0.6ms)
+Completed 200 OK in 48ms (Views: 44.7ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/test_models/1/edit" for ::1 at 2016-07-30 13:07:10 -0500
+Processing by TestModelsController#edit as HTML
+  Parameters: {"id"=>"1"}
+DEPRECATION WARNING: `redirect_to :back` is deprecated and will be removed from Rails 5.1. Please use `redirect_back(fallback_location: fallback_location)` where `fallback_location` represents the location to use if the request has no HTTP referer information. (called from redirect_if_unauthorized at /Users/xavier/OneDrive/Documents/Dev/ruby/authoreyes/lib/authoreyes/helpers/in_controller.rb:22)
+Redirected to http://localhost:3000/test_models/1
+Filter chain halted as :redirect_if_unauthorized rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/test_models/1" for ::1 at 2016-07-30 13:07:11 -0500
+Processing by TestModelsController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mTestModel Load (0.1ms)[0m  [1m[34mSELECT  "test_models".* FROM "test_models" WHERE "test_models"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  Rendering test_models/show.html.erb within layouts/application
+  Rendered test_models/show.html.erb within layouts/application (1.4ms)
+Completed 200 OK in 19ms (Views: 16.8ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/test_models" for ::1 at 2016-07-30 13:07:13 -0500
+Processing by TestModelsController#index as HTML
+  Rendering test_models/index.html.erb within layouts/application
+  [1m[36mTestModel Load (0.1ms)[0m  [1m[34mSELECT "test_models".* FROM "test_models"[0m
+  Rendered test_models/index.html.erb within layouts/application (2.0ms)
+Completed 200 OK in 18ms (Views: 16.1ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/test_models/1/edit" for ::1 at 2016-07-30 13:20:55 -0500
+Processing by TestModelsController#edit as HTML
+  Parameters: {"id"=>"1"}
+DEPRECATION WARNING: `redirect_to :back` is deprecated and will be removed from Rails 5.1. Please use `redirect_back(fallback_location: fallback_location)` where `fallback_location` represents the location to use if the request has no HTTP referer information. (called from redirect_if_unauthorized at /Users/xavier/OneDrive/Documents/Dev/ruby/authoreyes/lib/authoreyes/helpers/in_controller.rb:22)
+Redirected to http://localhost:3000/test_models
+Filter chain halted as :redirect_if_unauthorized rendered or redirected
+Completed 302 Found in 4ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/test_models" for ::1 at 2016-07-30 13:20:55 -0500
+Processing by TestModelsController#index as HTML
+  Rendering test_models/index.html.erb within layouts/application
+  [1m[36mTestModel Load (0.5ms)[0m  [1m[34mSELECT "test_models".* FROM "test_models"[0m
+  Rendered test_models/index.html.erb within layouts/application (8.9ms)
+Completed 200 OK in 56ms (Views: 50.6ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/test_models" for ::1 at 2016-07-30 13:21:03 -0500
+Processing by TestModelsController#index as HTML
+  Rendering test_models/index.html.erb within layouts/application
+  [1m[36mTestModel Load (0.2ms)[0m  [1m[34mSELECT "test_models".* FROM "test_models"[0m
+  Rendered test_models/index.html.erb within layouts/application (3.3ms)
+Completed 200 OK in 41ms (Views: 38.7ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/test_models" for ::1 at 2016-07-30 13:30:12 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TestModelsController#index as HTML
+  Rendering test_models/index.html.erb within layouts/application
+  [1m[36mTestModel Load (0.2ms)[0m  [1m[34mSELECT "test_models".* FROM "test_models"[0m
+  Rendered test_models/index.html.erb within layouts/application (12.8ms)
+Completed 200 OK in 234ms (Views: 210.8ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/test_models/1/edit" for ::1 at 2016-07-30 13:30:14 -0500
+Processing by TestModelsController#edit as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://localhost:3000/test_models
+Filter chain halted as :redirect_if_unauthorized rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/test_models" for ::1 at 2016-07-30 13:30:14 -0500
+Processing by TestModelsController#index as HTML
+Filter chain halted as :set_unauthorized_status_code rendered or redirected
+Completed 403 Forbidden in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/test_models" for ::1 at 2016-07-30 13:31:12 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TestModelsController#index as HTML
+  Rendering test_models/index.html.erb within layouts/application
+  [1m[36mTestModel Load (0.2ms)[0m  [1m[34mSELECT "test_models".* FROM "test_models"[0m
+  Rendered test_models/index.html.erb within layouts/application (13.0ms)
+Completed 200 OK in 213ms (Views: 194.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/test_models/1/edit" for ::1 at 2016-07-30 13:31:13 -0500
+Processing by TestModelsController#edit as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://localhost:3000/test_models
+Filter chain halted as :redirect_if_unauthorized rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/test_models" for ::1 at 2016-07-30 13:31:13 -0500
+Processing by TestModelsController#index as HTML
+  Rendering test_models/index.html.erb within layouts/application
+  Rendered test_models/index.html.erb within layouts/application (18.3ms)
+Completed 500 Internal Server Error in 32ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    13:   </thead>
+    14: 
+    15:   <tbody>
+    16:     <% @test_models.each do |test_model| %>
+    17:       <tr>
+    18:         <td><%= test_model.title %></td>
+    19:         <td><%= test_model.body %></td>
+  
+app/views/test_models/index.html.erb:16:in `_app_views_test_models_index_html_erb__1701130901549950293_70138489106080'
+  Rendering /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.5ms)
+  Rendering /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendering /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (48.5ms)
+Started GET "/test_models" for ::1 at 2016-07-30 13:31:54 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TestModelsController#index as HTML
+Filter chain halted as :set_unauthorized_status_code rendered or redirected
+Completed 403 Forbidden in 8ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-07-30 13:31:58 -0500
+Processing by TestModelsController#index as HTML
+  Rendering test_models/index.html.erb within layouts/application
+  [1m[36mTestModel Load (0.1ms)[0m  [1m[34mSELECT "test_models".* FROM "test_models"[0m
+  Rendered test_models/index.html.erb within layouts/application (10.9ms)
+Completed 200 OK in 207ms (Views: 199.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/test_models/1/edit" for ::1 at 2016-07-30 13:32:00 -0500
+Processing by TestModelsController#edit as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://localhost:3000/
+Filter chain halted as :redirect_if_unauthorized rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-07-30 13:32:00 -0500
+Processing by TestModelsController#index as HTML
+Filter chain halted as :set_unauthorized_status_code rendered or redirected
+Completed 403 Forbidden in 0ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-07-30 13:35:54 -0500
+Processing by TestModelsController#index as HTML
+  Rendering test_models/index.html.erb within layouts/application
+  [1m[36mTestModel Load (0.3ms)[0m  [1m[34mSELECT "test_models".* FROM "test_models"[0m
+  Rendered test_models/index.html.erb within layouts/application (2.8ms)
+Completed 200 OK in 24ms (Views: 20.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2016-07-30 13:42:21 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TestModelsController#index as HTML
+  Rendering test_models/index.html.erb within layouts/application
+  [1m[36mTestModel Load (0.2ms)[0m  [1m[34mSELECT "test_models".* FROM "test_models"[0m
+  Rendered test_models/index.html.erb within layouts/application (12.4ms)
+Completed 200 OK in 268ms (Views: 248.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/test_models/1/edit" for ::1 at 2016-07-30 13:42:23 -0500
+Processing by TestModelsController#edit as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://localhost:3000/
+Filter chain halted as :redirect_if_unauthorized rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-07-30 13:42:23 -0500
+Processing by TestModelsController#index as HTML
+  Rendering test_models/index.html.erb within layouts/application
+  [1m[36mTestModel Load (0.3ms)[0m  [1m[34mSELECT "test_models".* FROM "test_models"[0m
+  Rendered test_models/index.html.erb within layouts/application (2.1ms)
+Completed 403 Forbidden in 20ms (Views: 17.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/" for ::1 at 2016-07-30 13:42:55 -0500
+Processing by TestModelsController#index as HTML
+  Rendering test_models/index.html.erb within layouts/application
+  [1m[36mTestModel Load (0.2ms)[0m  [1m[34mSELECT "test_models".* FROM "test_models"[0m
+  Rendered test_models/index.html.erb within layouts/application (2.2ms)
+Completed 200 OK in 37ms (Views: 32.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/test_models/1/edit" for ::1 at 2016-07-30 13:42:57 -0500
+Processing by TestModelsController#edit as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://localhost:3000/
+Filter chain halted as :redirect_if_unauthorized rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-07-30 13:42:57 -0500
+Processing by TestModelsController#index as HTML
+  Rendering test_models/index.html.erb within layouts/application
+  [1m[36mTestModel Load (0.2ms)[0m  [1m[34mSELECT "test_models".* FROM "test_models"[0m
+  Rendered test_models/index.html.erb within layouts/application (2.5ms)
+Completed 403 Forbidden in 32ms (Views: 28.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2016-07-30 13:43:15 -0500
+Processing by TestModelsController#index as HTML
+  Rendering test_models/index.html.erb within layouts/application
+  [1m[36mTestModel Load (0.7ms)[0m  [1m[34mSELECT "test_models".* FROM "test_models"[0m
+  Rendered test_models/index.html.erb within layouts/application (5.7ms)
+Completed 200 OK in 30ms (Views: 25.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/test_models/1/edit" for ::1 at 2016-07-30 13:43:17 -0500
+Processing by TestModelsController#edit as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://localhost:3000/
+Filter chain halted as :redirect_if_unauthorized rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-07-30 13:43:17 -0500
+Processing by TestModelsController#index as HTML
+  Rendering test_models/index.html.erb within layouts/application
+  [1m[36mTestModel Load (0.2ms)[0m  [1m[34mSELECT "test_models".* FROM "test_models"[0m
+  Rendered test_models/index.html.erb within layouts/application (2.4ms)
+Completed 403 Forbidden in 34ms (Views: 30.5ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/" for ::1 at 2016-07-30 13:44:46 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TestModelsController#index as HTML
+  Rendering test_models/index.html.erb within layouts/application
+  [1m[36mTestModel Load (0.1ms)[0m  [1m[34mSELECT "test_models".* FROM "test_models"[0m
+  Rendered test_models/index.html.erb within layouts/application (11.3ms)
+Completed 200 OK in 290ms (Views: 267.0ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/test_models/1/edit" for ::1 at 2016-07-30 13:44:48 -0500
+Processing by TestModelsController#edit as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://localhost:3000/
+Filter chain halted as :redirect_if_unauthorized rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-07-30 13:44:48 -0500
+Processing by TestModelsController#index as HTML
+  Rendering test_models/index.html.erb within layouts/application
+  [1m[36mTestModel Load (0.3ms)[0m  [1m[34mSELECT "test_models".* FROM "test_models"[0m
+  Rendered test_models/index.html.erb within layouts/application (2.1ms)
+Completed 500 Internal Server Error in 18ms (Views: 15.4ms | ActiveRecord: 0.3ms)
+
+
+  
+AbstractController::DoubleRenderError (Render and/or redirect were called multiple times in this action. Please note that you may only call render OR redirect, and at most once per action. Also note that neither redirect nor render terminate execution of the action, so if you want to exit an action after redirecting, you need to do something like "redirect_to(...) and return".):
+  
+actionpack (5.0.0) lib/action_controller/metal/rendering.rb:35:in `render'
+actionpack (5.0.0) lib/action_controller/metal/instrumentation.rb:44:in `block (2 levels) in render'
+activesupport (5.0.0) lib/active_support/core_ext/benchmark.rb:12:in `block in ms'
+/Users/xavier/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/benchmark.rb:308:in `realtime'
+activesupport (5.0.0) lib/active_support/core_ext/benchmark.rb:12:in `ms'
+actionpack (5.0.0) lib/action_controller/metal/instrumentation.rb:44:in `block in render'
+actionpack (5.0.0) lib/action_controller/metal/instrumentation.rb:87:in `cleanup_view_runtime'
+activerecord (5.0.0) lib/active_record/railties/controller_runtime.rb:25:in `cleanup_view_runtime'
+actionpack (5.0.0) lib/action_controller/metal/instrumentation.rb:43:in `render'
+/Users/xavier/OneDrive/Documents/Dev/ruby/authoreyes/lib/authoreyes/helpers/in_controller.rb:32:in `set_unauthorized_status_code'
+activesupport (5.0.0) lib/active_support/callbacks.rb:382:in `block in make_lambda'
+activesupport (5.0.0) lib/active_support/callbacks.rb:218:in `block in halting'
+activesupport (5.0.0) lib/active_support/callbacks.rb:456:in `block in call'
+activesupport (5.0.0) lib/active_support/callbacks.rb:456:in `each'
+activesupport (5.0.0) lib/active_support/callbacks.rb:456:in `call'
+activesupport (5.0.0) lib/active_support/callbacks.rb:101:in `__run_callbacks__'
+activesupport (5.0.0) lib/active_support/callbacks.rb:750:in `_run_process_action_callbacks'
+activesupport (5.0.0) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.0) lib/abstract_controller/callbacks.rb:19:in `process_action'
+actionpack (5.0.0) lib/action_controller/metal/rescue.rb:20:in `process_action'
+actionpack (5.0.0) lib/action_controller/metal/instrumentation.rb:32:in `block in process_action'
+activesupport (5.0.0) lib/active_support/notifications.rb:164:in `block in instrument'
+activesupport (5.0.0) lib/active_support/notifications/instrumenter.rb:21:in `instrument'
+activesupport (5.0.0) lib/active_support/notifications.rb:164:in `instrument'
+actionpack (5.0.0) lib/action_controller/metal/instrumentation.rb:30:in `process_action'
+actionpack (5.0.0) lib/action_controller/metal/params_wrapper.rb:248:in `process_action'
+activerecord (5.0.0) lib/active_record/railties/controller_runtime.rb:18:in `process_action'
+actionpack (5.0.0) lib/abstract_controller/base.rb:126:in `process'
+actionview (5.0.0) lib/action_view/rendering.rb:30:in `process'
+actionpack (5.0.0) lib/action_controller/metal.rb:190:in `dispatch'
+actionpack (5.0.0) lib/action_controller/metal.rb:262:in `dispatch'
+actionpack (5.0.0) lib/action_dispatch/routing/route_set.rb:50:in `dispatch'
+actionpack (5.0.0) lib/action_dispatch/routing/route_set.rb:32:in `serve'
+actionpack (5.0.0) lib/action_dispatch/journey/router.rb:39:in `block in serve'
+actionpack (5.0.0) lib/action_dispatch/journey/router.rb:26:in `each'
+actionpack (5.0.0) lib/action_dispatch/journey/router.rb:26:in `serve'
+actionpack (5.0.0) lib/action_dispatch/routing/route_set.rb:725:in `call'
+warden (1.2.6) lib/warden/manager.rb:35:in `block in call'
+warden (1.2.6) lib/warden/manager.rb:34:in `catch'
+warden (1.2.6) lib/warden/manager.rb:34:in `call'
+rack (2.0.1) lib/rack/etag.rb:25:in `call'
+rack (2.0.1) lib/rack/conditional_get.rb:25:in `call'
+rack (2.0.1) lib/rack/head.rb:12:in `call'
+rack (2.0.1) lib/rack/session/abstract/id.rb:222:in `context'
+rack (2.0.1) lib/rack/session/abstract/id.rb:216:in `call'
+actionpack (5.0.0) lib/action_dispatch/middleware/cookies.rb:613:in `call'
+activerecord (5.0.0) lib/active_record/migration.rb:552:in `call'
+actionpack (5.0.0) lib/action_dispatch/middleware/callbacks.rb:38:in `block in call'
+activesupport (5.0.0) lib/active_support/callbacks.rb:97:in `__run_callbacks__'
+activesupport (5.0.0) lib/active_support/callbacks.rb:750:in `_run_call_callbacks'
+activesupport (5.0.0) lib/active_support/callbacks.rb:90:in `run_callbacks'
+actionpack (5.0.0) lib/action_dispatch/middleware/callbacks.rb:36:in `call'
+actionpack (5.0.0) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0) lib/action_dispatch/middleware/remote_ip.rb:79:in `call'
+actionpack (5.0.0) lib/action_dispatch/middleware/debug_exceptions.rb:49:in `call'
+actionpack (5.0.0) lib/action_dispatch/middleware/show_exceptions.rb:31:in `call'
+railties (5.0.0) lib/rails/rack/logger.rb:36:in `call_app'
+railties (5.0.0) lib/rails/rack/logger.rb:24:in `block in call'
+activesupport (5.0.0) lib/active_support/tagged_logging.rb:70:in `block in tagged'
+activesupport (5.0.0) lib/active_support/tagged_logging.rb:26:in `tagged'
+activesupport (5.0.0) lib/active_support/tagged_logging.rb:70:in `tagged'
+railties (5.0.0) lib/rails/rack/logger.rb:24:in `call'
+sprockets-rails (3.1.1) lib/sprockets/rails/quiet_assets.rb:13:in `call'
+actionpack (5.0.0) lib/action_dispatch/middleware/request_id.rb:24:in `call'
+rack (2.0.1) lib/rack/method_override.rb:22:in `call'
+rack (2.0.1) lib/rack/runtime.rb:22:in `call'
+activesupport (5.0.0) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+actionpack (5.0.0) lib/action_dispatch/middleware/executor.rb:12:in `call'
+actionpack (5.0.0) lib/action_dispatch/middleware/static.rb:136:in `call'
+rack (2.0.1) lib/rack/sendfile.rb:111:in `call'
+railties (5.0.0) lib/rails/engine.rb:522:in `call'
+rack (2.0.1) lib/rack/handler/webrick.rb:86:in `service'
+/Users/xavier/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+/Users/xavier/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+/Users/xavier/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+  Rendering /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout
+  Rendering /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (2.5ms)
+  Rendering /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.4ms)
+  Rendering /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (47.2ms)
+Started GET "/" for ::1 at 2016-07-30 13:45:24 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TestModelsController#index as HTML
+  Rendering test_models/index.html.erb within layouts/application
+  Rendered test_models/index.html.erb within layouts/application (14.4ms)
+Completed 500 Internal Server Error in 47ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    13:   </thead>
+    14: 
+    15:   <tbody>
+    16:     <% @test_models.each do |test_model| %>
+    17:       <tr>
+    18:         <td><%= test_model.title %></td>
+    19:         <td><%= test_model.body %></td>
+  
+app/views/test_models/index.html.erb:16:in `_app_views_test_models_index_html_erb___3806593139227482295_70136641884280'
+  Rendering /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.2ms)
+  Rendering /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendering /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (50.9ms)
+Started GET "/" for ::1 at 2016-07-30 13:45:28 -0500
+Processing by TestModelsController#index as HTML
+  Rendering test_models/index.html.erb within layouts/application
+  Rendered test_models/index.html.erb within layouts/application (11.5ms)
+Completed 500 Internal Server Error in 26ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    13:   </thead>
+    14: 
+    15:   <tbody>
+    16:     <% @test_models.each do |test_model| %>
+    17:       <tr>
+    18:         <td><%= test_model.title %></td>
+    19:         <td><%= test_model.body %></td>
+  
+app/views/test_models/index.html.erb:16:in `_app_views_test_models_index_html_erb___3806593139227482295_70136643550620'
+  Rendering /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.7ms)
+  Rendering /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendering /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (46.7ms)
+Started GET "/" for ::1 at 2016-07-30 13:45:30 -0500
+Processing by TestModelsController#index as HTML
+  Rendering test_models/index.html.erb within layouts/application
+  Rendered test_models/index.html.erb within layouts/application (14.6ms)
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    13:   </thead>
+    14: 
+    15:   <tbody>
+    16:     <% @test_models.each do |test_model| %>
+    17:       <tr>
+    18:         <td><%= test_model.title %></td>
+    19:         <td><%= test_model.body %></td>
+  
+app/views/test_models/index.html.erb:16:in `_app_views_test_models_index_html_erb___3806593139227482295_70136639502620'
+  Rendering /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.4ms)
+  Rendering /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendering /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (44.5ms)
+Started GET "/" for ::1 at 2016-07-30 13:45:41 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TestModelsController#index as HTML
+  Rendering test_models/index.html.erb within layouts/application
+  Rendered test_models/index.html.erb within layouts/application (15.4ms)
+Completed 500 Internal Server Error in 46ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    13:   </thead>
+    14: 
+    15:   <tbody>
+    16:     <% @test_models.each do |test_model| %>
+    17:       <tr>
+    18:         <td><%= test_model.title %></td>
+    19:         <td><%= test_model.body %></td>
+  
+app/views/test_models/index.html.erb:16:in `_app_views_test_models_index_html_erb__1512058065717421896_70197636376400'
+  Rendering /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.6ms)
+  Rendering /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendering /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.4ms)
+  Rendered /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (49.3ms)
+Started GET "/test_models" for ::1 at 2016-07-30 13:45:46 -0500
+Processing by TestModelsController#index as HTML
+  Rendering test_models/index.html.erb within layouts/application
+  Rendered test_models/index.html.erb within layouts/application (11.9ms)
+Completed 500 Internal Server Error in 29ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (undefined method `each' for nil:NilClass):
+    13:   </thead>
+    14: 
+    15:   <tbody>
+    16:     <% @test_models.each do |test_model| %>
+    17:       <tr>
+    18:         <td><%= test_model.title %></td>
+    19:         <td><%= test_model.body %></td>
+  
+app/views/test_models/index.html.erb:16:in `_app_views_test_models_index_html_erb__1512058065717421896_70197645044120'
+  Rendering /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (3.8ms)
+  Rendering /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendering /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.6ms)
+  Rendered /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (47.6ms)
+Started GET "/test_models/1/edit" for ::1 at 2016-07-30 13:45:50 -0500
+Processing by TestModelsController#edit as HTML
+  Parameters: {"id"=>"1"}
+  Rendering test_models/edit.html.erb within layouts/application
+  Rendered test_models/_form.html.erb (15.5ms)
+  Rendered test_models/edit.html.erb within layouts/application (28.1ms)
+Completed 500 Internal Server Error in 45ms (ActiveRecord: 0.0ms)
+
+
+  
+ActionView::Template::Error (First argument in form cannot contain nil or be empty):
+    1: <%= form_for(test_model) do |f| %>
+    2:   <% if test_model.errors.any? %>
+    3:     <div id="error_explanation">
+    4:       <h2><%= pluralize(test_model.errors.count, "error") %> prohibited this test_model from being saved:</h2>
+  
+app/views/test_models/_form.html.erb:1:in `_app_views_test_models__form_html_erb__3571904370142025708_70197637366800'
+app/views/test_models/edit.html.erb:3:in `_app_views_test_models_edit_html_erb__4279851472457619616_70197637415920'
+  Rendering /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout
+  Rendering /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_source.html.erb
+  Rendered /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_source.html.erb (4.0ms)
+  Rendering /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb
+  Rendered /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendering /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb
+  Rendered /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/xavier/.rvm/gems/ruby-2.3.0/gems/actionpack-5.0.0/lib/action_dispatch/middleware/templates/rescues/template_error.html.erb within rescues/layout (43.6ms)
+Started GET "/test_models/1/edit" for ::1 at 2016-07-30 13:46:53 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TestModelsController#edit as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://localhost:3000/
+Filter chain halted as :redirect_if_unauthorized rendered or redirected
+Completed 302 Found in 19ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-07-30 13:46:53 -0500
+Processing by TestModelsController#index as HTML
+  Rendering test_models/index.html.erb within layouts/application
+  [1m[36mTestModel Load (0.1ms)[0m  [1m[34mSELECT "test_models".* FROM "test_models"[0m
+  Rendered test_models/index.html.erb within layouts/application (7.7ms)
+DEPRECATION WARNING: env is deprecated and will be removed from Rails 5.1 (called from set_unauthorized_status_code at /Users/xavier/OneDrive/Documents/Dev/ruby/authoreyes/lib/authoreyes/helpers/in_controller.rb:32)
+Completed 200 OK in 196ms (Views: 190.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/" for ::1 at 2016-07-30 13:47:57 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TestModelsController#index as HTML
+  Rendering test_models/index.html.erb within layouts/application
+  [1m[36mTestModel Load (0.1ms)[0m  [1m[34mSELECT "test_models".* FROM "test_models"[0m
+  Rendered test_models/index.html.erb within layouts/application (11.5ms)
+Completed 200 OK in 250ms (Views: 228.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/test_models/1/edit" for ::1 at 2016-07-30 13:47:59 -0500
+Processing by TestModelsController#edit as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://localhost:3000/
+Filter chain halted as :redirect_if_unauthorized rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-07-30 13:47:59 -0500
+Processing by TestModelsController#index as HTML
+  Rendering test_models/index.html.erb within layouts/application
+  [1m[36mTestModel Load (0.1ms)[0m  [1m[34mSELECT "test_models".* FROM "test_models"[0m
+  Rendered test_models/index.html.erb within layouts/application (1.8ms)
+DEPRECATION WARNING: env is deprecated and will be removed from Rails 5.1 (called from set_unauthorized_status_code at /Users/xavier/OneDrive/Documents/Dev/ruby/authoreyes/lib/authoreyes/helpers/in_controller.rb:32)
+Completed 200 OK in 17ms (Views: 14.9ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for ::1 at 2016-07-30 13:48:13 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TestModelsController#index as HTML
+  Rendering test_models/index.html.erb within layouts/application
+  [1m[36mTestModel Load (0.1ms)[0m  [1m[34mSELECT "test_models".* FROM "test_models"[0m
+  Rendered test_models/index.html.erb within layouts/application (14.3ms)
+Completed 200 OK in 249ms (Views: 233.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/test_models/1/edit" for ::1 at 2016-07-30 13:48:15 -0500
+Processing by TestModelsController#edit as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://localhost:3000/
+Filter chain halted as :redirect_if_unauthorized rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-07-30 13:48:15 -0500
+Processing by TestModelsController#index as HTML
+  Rendering test_models/index.html.erb within layouts/application
+  [1m[36mTestModel Load (0.1ms)[0m  [1m[34mSELECT "test_models".* FROM "test_models"[0m
+  Rendered test_models/index.html.erb within layouts/application (2.2ms)
+DEPRECATION WARNING: env is deprecated and will be removed from Rails 5.1 (called from set_unauthorized_status_code at (byebug):1)
+DEPRECATION WARNING: env is deprecated and will be removed from Rails 5.1 (called from set_unauthorized_status_code at (byebug):1)
+DEPRECATION WARNING: env is deprecated and will be removed from Rails 5.1 (called from set_unauthorized_status_code at /Users/xavier/OneDrive/Documents/Dev/ruby/authoreyes/lib/authoreyes/helpers/in_controller.rb:33)
+Completed 403 Forbidden in 167174ms (Views: 16.0ms | ActiveRecord: 0.1ms)
+
+
+Started GET "/" for ::1 at 2016-07-30 13:51:44 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.1ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by TestModelsController#index as HTML
+  Rendering test_models/index.html.erb within layouts/application
+  [1m[36mTestModel Load (0.2ms)[0m  [1m[34mSELECT "test_models".* FROM "test_models"[0m
+  Rendered test_models/index.html.erb within layouts/application (14.9ms)
+Completed 200 OK in 222ms (Views: 202.5ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/test_models/1/edit" for ::1 at 2016-07-30 13:51:46 -0500
+Processing by TestModelsController#edit as HTML
+  Parameters: {"id"=>"1"}
+Redirected to http://localhost:3000/
+Filter chain halted as :redirect_if_unauthorized rendered or redirected
+Completed 302 Found in 1ms (ActiveRecord: 0.0ms)
+
+
+Started GET "/" for ::1 at 2016-07-30 13:51:46 -0500
+Processing by TestModelsController#index as HTML
+  Rendering test_models/index.html.erb within layouts/application
+  [1m[36mTestModel Load (0.3ms)[0m  [1m[34mSELECT "test_models".* FROM "test_models"[0m
+  Rendered test_models/index.html.erb within layouts/application (2.3ms)
+Completed 403 Forbidden in 17ms (Views: 14.7ms | ActiveRecord: 0.3ms)
+
+
