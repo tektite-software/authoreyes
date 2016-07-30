@@ -5,9 +5,32 @@ module Authoreyes
     # Authoreyes, only permitting access to that action if certain
     # conditions are met, according to the defined Authorization Rules.
     module InController
+      extend ActiveSupport::Concern
+      # ActiveSupport.on_load :action_controller do
+      #   extend
+      # end
 
+      ApplicationController.send :before_action, :redirect_if_unauthorized
+
+      # TODO: Implement this!
       def filter_resource_access(options = {})
 
+      end
+
+      def redirect_if_unauthorized
+        unless permitted_to? action_name
+          session[:request_unauthorized] = true
+          redirect_back fallback_location: root_path,
+                        status: :found,
+                        alert: 'You are not allowed to do that.'
+        end
+      end
+
+      def set_unauthorized_status_code
+        if session[:request_unauthorized] == true
+          session.delete :request_unauthorized
+          response.status = :forbidden
+        end
       end
 
       # If the current user meets the given privilege, permitted_to? returns true
@@ -43,11 +66,13 @@ module Authoreyes
         )
       end
 
+      private
+
       # Create hash of options to be used with ENGINE's permit methods
-      def options_for_permit (object_or_sym = nil, options = {}, bang = true)
+      def options_for_permit(object_or_sym = nil, options = {}, bang = true)
         context = object = nil
         if object_or_sym.nil?
-          context = self.class.decl_auth_context
+          context = controller_name.to_sym
         elsif !Authorization.is_a_association_proxy?(object_or_sym) and object_or_sym.is_a?(Symbol)
           context = object_or_sym
         else
@@ -60,6 +85,10 @@ module Authoreyes
           :bang => bang}.merge(options)
         result[:user] = current_user unless result.key?(:user)
         result
+      end
+
+      class_methods do
+
       end
     end
   end

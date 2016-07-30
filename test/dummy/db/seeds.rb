@@ -12,8 +12,8 @@ roles = Role.create([
 ]) if Role.count == 0
 
 users = User.create([
-  {first_name: 'Admin', last_name: 'User', email: 'admin@example.org', role_id: Role.find_by(title: 'admin').id},
-    {first_name: 'Normal', last_name: 'User', email: 'normal@example.org', role_id: Role.find_by(title: 'user').id}
+  {first_name: 'Admin', last_name: 'User', email: 'admin@example.org', role_id: Role.find_by(title: 'admin').id, password: 'password', password_confirmation: 'password'},
+  {first_name: 'Normal', last_name: 'User', email: 'normal@example.org', role_id: Role.find_by(title: 'user').id, password: 'password', password_confirmation: 'password'}
 ]) if User.count == 0
 
 test_models = TestModel.create([

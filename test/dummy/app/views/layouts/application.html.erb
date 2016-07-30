@@ -9,6 +9,9 @@
   </head>
 
   <body>
+    <%= link_to 'Sign Out', destroy_user_session_path if user_signed_in? %>
+    <%= link_to 'Sign In', new_user_session_path unless user_signed_in? %>
+    <p id="alert"><%= alert %></p>
     <%= yield %>
   </body>
 </html>

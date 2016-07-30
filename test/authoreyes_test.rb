@@ -17,10 +17,6 @@ describe Authoreyes do
     Role.count.must_be :>=, 2
   end
 
-  the 'first test user should be an admin' do
-    User.first.role.must_equal Role.find_by(title: 'admin')
-  end
-
   the 'test users should return role symbols' do
     User.first.role_symbols.must_be_instance_of Array
   end
