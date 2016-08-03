@@ -48,6 +48,10 @@ div.actions {
   color: green;
 }
 
+#alert: {
+  color: red;
+}
+
 .field_with_errors {
   padding: 2px;
   background-color: red;
