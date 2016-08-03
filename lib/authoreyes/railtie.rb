@@ -30,8 +30,12 @@ module Authoreyes
     # Controller integration
     initializer 'authoreyes.in_controller' do |app|
       ActiveSupport.on_load :action_controller do
-        before_action :redirect_if_unauthorized
-        after_action :set_unauthorized_status_code
+        if Rails.application.config.api_only
+          before_action :render_unauthorized
+        else
+          before_action :redirect_if_unauthorized
+          after_action :set_unauthorized_status_code
+        end
       end
     end
 

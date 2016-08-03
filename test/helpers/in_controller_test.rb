@@ -4,14 +4,20 @@ describe Authoreyes::Helpers::InController do
   admin_user = FactoryGirl.build(:user, role: FactoryGirl.build(:admin_role))
   normal_user = FactoryGirl.build(:user, role: FactoryGirl.build(:role))
 
-  describe 'functionality added to ActionController::Base' do
+  describe 'functionality added to ActionController::Metal' do
 
     it 'should add .permitted_to?' do
-      ActionController::Base.instance_methods.must_include :permitted_to?
+      ActionController::Metal.instance_methods.must_include :permitted_to?
     end
 
     it 'should add .permitted_to!' do
-      ActionController::Base.instance_methods.must_include :permitted_to?
+      ActionController::Metal.instance_methods.must_include :permitted_to?
+    end
+  end
+
+  describe 'functionality added to ActionController::API' do
+    it 'has a render_unauthorized method' do
+      ActionController::API.instance_methods.must_include :render_unauthorized
     end
   end
 

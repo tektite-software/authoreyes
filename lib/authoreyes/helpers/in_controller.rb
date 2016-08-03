@@ -10,26 +10,47 @@ module Authoreyes
       #   extend
       # end
 
-      ApplicationController.send :before_action, :redirect_if_unauthorized
+      # ApplicationController.send :before_action, :redirect_if_unauthorized
 
       # TODO: Implement this!
       def filter_resource_access(options = {})
 
       end
 
-      def redirect_if_unauthorized
-        unless permitted_to? action_name
+      ActionController::Base.send(:define_method, :redirect_if_unauthorized) do
+        begin
+          permitted_to! action_name
+        rescue Authoreyes::Authorization::NotAuthorized => e
           session[:request_unauthorized] = true
+          puts e
           redirect_back fallback_location: root_path,
                         status: :found,
                         alert: 'You are not allowed to do that.'
         end
       end
 
-      def set_unauthorized_status_code
+      ActionController::Base.send(:define_method, :set_unauthorized_status_code) do
         if session[:request_unauthorized] == true
           session.delete :request_unauthorized
           response.status = :forbidden
+        end
+      end
+
+      ActionController::API.send(:define_method, :render_unauthorized) do
+        begin
+          permitted_to! action_name
+        rescue Authoreyes::Authorization::NotAuthorized => e
+          puts e
+          response_object = ActiveModelSerializers::Model.new()
+          response_object.attributes.merge!({
+            action: action_name,
+            controller: controller_name
+          })
+          response_object.errors.add :action, e
+          # Assumes ActiveModel::Serializers is used.
+          # If not used, you will have to override `render_unauthorized`
+          # in your ApplicationController.
+          render json: response_object, status: :forbidden, adapter: :json_api, serializer: ActiveModel::Serializer::ErrorSerializer
         end
       end
 
