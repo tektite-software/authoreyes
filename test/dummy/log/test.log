@@ -5350,3 +5350,80 @@ Authoreyes::Helpers::InController::functionality added to ActionController::Meta
 Authoreyes::Helpers::InController::functionality added to ActionController::Metal: test_0001_should add .permitted_to?
 ----------------------------------------------------------------------------------------------------------------------
   [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1m[34mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------------------------------------------------------
+Authoreyes::Railtie: test_0002_should set up Authoreyes::ENGINE as a constant auth engine instance
+--------------------------------------------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------------------------------
+Authoreyes::Railtie: test_0001_sets up configuration for Authoreyes
+-------------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[36mTestModel Load (0.5ms)[0m  [1m[34mSELECT  "test_models".* FROM "test_models" WHERE "test_models"."user_id" = ? LIMIT ?[0m  [["user_id", 2], ["LIMIT", 1]]
+  [1m[36mUser Load (0.4ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mRole Load (0.4ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.4ms)[0m  [1m[34mSELECT COUNT(*) FROM "users"[0m
+  [1m[35m (0.1ms)[0m  [1m[34mSELECT COUNT(*) FROM "roles"[0m
+  [1m[36mUser Load (0.1ms)[0m  [1m[34mSELECT  "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT ?[0m  [["LIMIT", 1]]
+  [1m[36mRole Load (0.2ms)[0m  [1m[34mSELECT  "roles".* FROM "roles" WHERE "roles"."id" = ? LIMIT ?[0m  [["id", 1], ["LIMIT", 1]]
+  [1m[35m (0.2ms)[0m  [1m[34mSELECT COUNT(*) FROM "test_models"[0m
+  [1m[36mTestModel Load (0.3ms)[0m  [1m[34mSELECT  "test_models".* FROM "test_models" WHERE "test_models"."user_id" = ? LIMIT ?[0m  [["user_id", 1], ["LIMIT", 1]]
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+---------------------------------------------------------------------------------------------------------------------------
+Authoreyes::Helpers::InController::functionality added to ActionController::API: test_0001_has a render_unauthorized method
+---------------------------------------------------------------------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------------------------------------------------------------------------------------------
+Authoreyes::Helpers::InController::functionality added to ActionController::Metal: test_0001_should add .permitted_to?
+----------------------------------------------------------------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------------------------------------------------------------------------------------------
+Authoreyes::Helpers::InController::functionality added to ActionController::Metal: test_0002_should add .permitted_to!
+----------------------------------------------------------------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.2ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------------------------------------------------
+Authoreyes::Helpers::InController::permitted_to?: test_0003_returns true when allowed
+-------------------------------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+----------------------------------------------------------------------------------------------
+Authoreyes::Helpers::InController::permitted_to?: test_0001_returns false for when not allowed
+----------------------------------------------------------------------------------------------
+  [1m[35m (0.0ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.0ms)[0m  [1m[36mbegin transaction[0m
+------------------------------------------------------------------------------
+Authoreyes::Helpers::InController::permitted_to?: test_0002_obeys if_attribute
+------------------------------------------------------------------------------
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Authoreyes::Helpers::InController::Rails Controller integration::capybara::when a controller is authorized by default Authoreyes behavior: test_0001_allows guests to visit pages allowed to them
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Started GET "/" for 127.0.0.1 at 2017-01-26 17:41:21 -0600
+Processing by TestModelsController#index as HTML
+  Rendering test_models/index.html.erb within layouts/application
+  [1m[36mTestModel Load (0.2ms)[0m  [1m[34mSELECT "test_models".* FROM "test_models"[0m
+  Rendered test_models/index.html.erb within layouts/application (9.0ms)
+Completed 200 OK in 248ms (Views: 226.1ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
+  [1m[35m (0.1ms)[0m  [1m[36mbegin transaction[0m
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Authoreyes::Helpers::InController::Rails Controller integration::capybara::when a controller is authorized by default Authoreyes behavior: test_0002_stops guests from creating things
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Started GET "/test_models/new" for 127.0.0.1 at 2017-01-26 17:41:21 -0600
+Processing by TestModelsController#new as HTML
+Redirected to http://www.example.com/
+Filter chain halted as :redirect_if_unauthorized rendered or redirected
+Completed 302 Found in 2ms (ActiveRecord: 0.0ms)
+Started GET "/" for 127.0.0.1 at 2017-01-26 17:41:21 -0600
+Processing by TestModelsController#index as HTML
+  Rendering test_models/index.html.erb within layouts/application
+  [1m[36mTestModel Load (0.2ms)[0m  [1m[34mSELECT "test_models".* FROM "test_models"[0m
+  Rendered test_models/index.html.erb within layouts/application (2.4ms)
+Completed 403 Forbidden in 14ms (Views: 10.9ms | ActiveRecord: 0.2ms)
+  [1m[35m (0.1ms)[0m  [1m[31mrollback transaction[0m
