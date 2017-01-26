@@ -13,6 +13,6 @@ end
 
 # class Minitest::Unit::TestCase
 #   include Devise::Test::ControllerHelpers
-  include Warden::Test::Helpers
-  Warden.test_mode!
+include Warden::Test::Helpers
+Warden.test_mode!
 # end

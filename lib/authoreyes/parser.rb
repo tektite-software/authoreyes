@@ -9,9 +9,9 @@ module Authoreyes
   # constructs a data model of its contents.
   module Parser
     # Signals that the specified file to load was not found.
-    class DSLFileNotFoundError < Exception; end
+    class DSLFileNotFoundError < RuntimeError; end
     # Signals errors that occur while reading and parsing an authorization DSL
-    class DSLError < Exception; end
+    class DSLError < RuntimeError; end
     # Signals errors in the syntax of an authorization DSL.
     class DSLSyntaxError < DSLError; end
   end

@@ -5,17 +5,17 @@ module Authoreyes
     class AttributeWithPermission < Attribute
       # E.g. privilege :read, attr_or_hash either :attribute or
       # { :attribute => :deeper_attribute }
-      def initialize (privilege, attr_or_hash, context = nil)
+      def initialize(privilege, attr_or_hash, context = nil)
         @privilege = privilege
         @context = context
         @attr_hash = attr_or_hash
       end
 
-      def initialize_copy (from)
+      def initialize_copy(_from)
         @attr_hash = deep_hash_clone(@attr_hash) if @attr_hash.is_a?(Hash)
       end
 
-      def validate? (attr_validator, object = nil, hash_or_attr = nil)
+      def validate?(attr_validator, object = nil, hash_or_attr = nil)
         object ||= attr_validator.object
         hash_or_attr ||= @attr_hash
         return false unless object
@@ -28,15 +28,15 @@ module Authoreyes
             raise NilAttributeValueError, "Attribute #{hash_or_attr.inspect} is nil in #{object.inspect}."
           when Enumerable
             attr_value.any? do |inner_value|
-              attr_validator.engine.permit? @privilege, :object => inner_value, :user => attr_validator.user
+              attr_validator.engine.permit? @privilege, object: inner_value, user: attr_validator.user
             end
           else
-            attr_validator.engine.permit? @privilege, :object => attr_value, :user => attr_validator.user
+            attr_validator.engine.permit? @privilege, object: attr_value, user: attr_validator.user
           end
         when Hash
           hash_or_attr.all? do |attr, sub_hash|
             attr_value = object_attribute_value(object, attr)
-            if attr_value == nil
+            if attr_value.nil?
               raise NilAttributeValueError, "Attribute #{attr.inspect} is nil in #{object.inspect}."
             elsif attr_value.is_a?(Enumerable)
               attr_value.any? do |inner_value|
@@ -47,14 +47,14 @@ module Authoreyes
             end
           end
         when NilClass
-          attr_validator.engine.permit? @privilege, :object => object, :user => attr_validator.user
+          attr_validator.engine.permit? @privilege, object: object, user: attr_validator.user
         else
           raise AuthorizationError, "Wrong conditions hash format: #{hash_or_attr.inspect}"
         end
       end
 
       # may return an array of obligations to be OR'ed
-      def obligation (attr_validator, hash_or_attr = nil, path = [])
+      def obligation(attr_validator, hash_or_attr = nil, path = [])
         hash_or_attr ||= @attr_hash
         case hash_or_attr
         when Symbol
@@ -71,23 +71,23 @@ module Authoreyes
           end
 
           obligations = attr_validator.engine.obligations(@privilege,
-                            :context => @context,
-                            :user    => attr_validator.user)
+                                                          context: @context,
+                                                          user: attr_validator.user)
 
-          obligations.collect {|obl| {hash_or_attr => obl} }
+          obligations.collect { |obl| { hash_or_attr => obl } }
         when Hash
           obligations_array_attrs = []
           obligations =
-              hash_or_attr.inject({}) do |all, pair|
-                attr, sub_hash = pair
-                all[attr] = obligation(attr_validator, sub_hash, path + [attr])
-                if all[attr].length > 1
-                  obligations_array_attrs << attr
-                else
-                  all[attr] = all[attr].first
-                end
-                all
+            hash_or_attr.inject({}) do |all, pair|
+              attr, sub_hash = pair
+              all[attr] = obligation(attr_validator, sub_hash, path + [attr])
+              if all[attr].length > 1
+                obligations_array_attrs << attr
+              else
+                all[attr] = all[attr].first
               end
+              all
+            end
           obligations = [obligations]
           obligations_array_attrs.each do |attr|
             next_array_size = obligations.first[attr].length
@@ -102,8 +102,8 @@ module Authoreyes
           obligations
         when NilClass
           attr_validator.engine.obligations(@privilege,
-              :context => attr_validator.context,
-              :user    => attr_validator.user)
+                                            context: attr_validator.context,
+                                            user: attr_validator.user)
         else
           raise AuthorizationError, "Wrong conditions hash format: #{hash_or_attr.inspect}"
         end
@@ -114,10 +114,11 @@ module Authoreyes
       end
 
       private
-      def self.reflection_for_path (parent_model, path)
+
+      def self.reflection_for_path(parent_model, path)
         reflection = path.empty? ? parent_model : begin
           parent = reflection_for_path(parent_model, path[0..-2])
-          if !parent.respond_to?(:proxy_reflection) and parent.respond_to?(:klass)
+          if !parent.respond_to?(:proxy_reflection) && parent.respond_to?(:klass)
             parent.klass.reflect_on_association(path.last)
           else
             parent.reflect_on_association(path.last)

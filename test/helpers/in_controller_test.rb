@@ -3,9 +3,9 @@ require 'test_helper'
 describe Authoreyes::Helpers::InController do
   admin_user = FactoryGirl.build(:user, role: FactoryGirl.build(:admin_role))
   normal_user = FactoryGirl.build(:user, role: FactoryGirl.build(:role))
+  normal_user_test_model = FactoryGirl.build(:test_model, user: normal_user)
 
   describe 'functionality added to ActionController::Metal' do
-
     it 'should add .permitted_to?' do
       ActionController::Metal.instance_methods.must_include :permitted_to?
     end
@@ -28,6 +28,14 @@ describe Authoreyes::Helpers::InController do
         :test_models,
         user: normal_user
       ).must_equal false
+    end
+
+    it 'obeys if_attribute' do
+      ActionController::Base.new.permitted_to?(
+        :manage,
+        normal_user_test_model,
+        user: normal_user
+      ).must_equal true
     end
 
     it 'returns true when allowed' do

@@ -10,8 +10,8 @@ module Authoreyes
         reset!
       end
 
-      def initialize_copy(source)
-        @rules = @rules.collect {|rule| rule.clone}
+      def initialize_copy(_source)
+        @rules = @rules.collect(&:clone)
         reset!
       end
 
@@ -28,7 +28,7 @@ module Authoreyes
         reset!
       end
 
-      def << rule
+      def <<(rule)
         @rules << rule
         reset!
       end
@@ -38,8 +38,9 @@ module Authoreyes
       end
 
       private
+
       def reset!
-        @cached_auth_rules =nil
+        @cached_auth_rules = nil
       end
 
       def cached_auth_rules

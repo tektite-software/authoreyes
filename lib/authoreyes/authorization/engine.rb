@@ -18,7 +18,7 @@ module Authoreyes
         options = {
           reader: nil
         }.merge(options)
-        #@auth_rules = AuthorizationRuleSet.new reader.auth_rules_reader.auth_rules
+        # @auth_rules = AuthorizationRuleSet.new reader.auth_rules_reader.auth_rules
         @reader = ::Authoreyes::Parser::DSLParser.factory(options[:reader] || AUTH_DSL_FILES)
       end
 
@@ -75,18 +75,18 @@ module Authoreyes
       #   Should NotAuthorized exceptions be raised
       #   Defaults to true.
       #
-      def permit! (privilege, options = {})
+      def permit!(privilege, options = {})
         return true if Authorization.ignore_access_control
         options = {
-          :object => nil,
-          :skip_attribute_test => false,
-          :context => nil,
-          :bang => true
+          object: nil,
+          skip_attribute_test: false,
+          context: nil,
+          bang: true
         }.merge(options)
 
         # Make sure we're handling all privileges as symbols.
-        privilege = privilege.is_a?( Array ) ?
-                    privilege.flatten.collect { |priv| priv.to_sym } :
+        privilege = privilege.is_a?(Array) ?
+                    privilege.flatten.collect(&:to_sym) :
                     privilege.to_sym
 
         # Convert context to symbol as well
@@ -102,18 +102,22 @@ module Authoreyes
         # Example: permit!( :edit, :object => user.posts )
         #
         if Authorization.is_a_association_proxy?(options[:object]) && options[:object].respond_to?(:new)
-          options[:object] = (Rails.version < "3.0" ? options[:object] : options[:object].where(nil)).new
+          options[:object] = (Rails.version < '3.0' ? options[:object] : options[:object].where(nil)).new
         end
 
-        options[:context] ||= options[:object] && (
-          options[:object].class.respond_to?(:decl_auth_context) ?
-              options[:object].class.decl_auth_context :
-              options[:object].class.name.tableize.to_sym
-        ) rescue NoMethodError
+        begin
+          options[:context] ||= options[:object] && (
+                    options[:object].class.respond_to?(:decl_auth_context) ?
+                        options[:object].class.decl_auth_context :
+                        options[:object].class.name.tableize.to_sym
+          )
+        rescue
+          NoMethodError
+        end
 
         user, roles, privileges = user_roles_privleges_from_options(privilege, options)
 
-        return true if roles.is_a?(Array) and not (roles & omnipotent_roles).empty?
+        return true if roles.is_a?(Array) && !(roles & omnipotent_roles).empty?
 
         # find a authorization rule that matches for at least one of the roles and
         # at least one of the given privileges
@@ -127,9 +131,9 @@ module Authoreyes
 
         if options[:bang]
           if rules.empty?
-            raise NotAuthorized, "No matching rules found for #{privilege} for #{user.inspect} " +
-              "(roles #{roles.inspect}, privileges #{privileges.inspect}, " +
-              "context #{options[:context].inspect})."
+            raise NotAuthorized, "No matching rules found for #{privilege} for #{user.inspect} " \
+                                 "(roles #{roles.inspect}, privileges #{privileges.inspect}, " \
+                                 "context #{options[:context].inspect})."
           else
             raise AttributeAuthorizationError, "#{privilege} not allowed for #{user.inspect} on #{(options[:object] || options[:context]).inspect}."
           end
@@ -140,8 +144,8 @@ module Authoreyes
 
       # Calls permit! but doesn't raise authorization errors. If no exception is
       # raised, permit? returns true and yields  to the optional block.
-      def permit? (privilege, options = {}) # :yields:
-        if permit!(privilege, options.merge(:bang=> false))
+      def permit?(privilege, options = {}) # :yields:
+        if permit!(privilege, options.merge(bang: false))
           yield if block_given?
           true
         else
@@ -165,13 +169,13 @@ module Authoreyes
       # [:+context+]  See permit!
       # [:+user+]  See permit!
       #
-      def obligations (privilege, options = {})
-        options = {:context => nil}.merge(options)
+      def obligations(privilege, options = {})
+        options = { context: nil }.merge(options)
         user, roles, privileges = user_roles_privleges_from_options(privilege, options)
 
-        permit!(privilege, :skip_attribute_test => true, :user => user, :context => options[:context])
+        permit!(privilege, skip_attribute_test: true, user: user, context: options[:context])
 
-        return [] if roles.is_a?(Array) and not (roles & omnipotent_roles).empty?
+        return [] if roles.is_a?(Array) && !(roles & omnipotent_roles).empty?
 
         attr_validator = AttributeValidator.new(self, user, nil, privilege, options[:context])
         matching_auth_rules(roles, privileges, options[:context]).collect do |rule|
@@ -182,31 +186,31 @@ module Authoreyes
       # Returns the description for the given role.  The description may be
       # specified with the authorization rules.  Returns +nil+ if none was
       # given.
-      def description_for (role)
+      def description_for(role)
         role_descriptions[role]
       end
 
       # Returns the title for the given role.  The title may be
       # specified with the authorization rules.  Returns +nil+ if none was
       # given.
-      def title_for (role)
+      def title_for(role)
         role_titles[role]
       end
 
       # Returns the role symbols of the given user.
-      def roles_for (user)
+      def roles_for(user)
         user ||= Authorization.current_user
         raise AuthorizationUsageError, "User object doesn't respond to roles (#{user.inspect})" \
-          if !user.respond_to?(:role_symbols) and !user.respond_to?(:roles)
+          if !user.respond_to?(:role_symbols) && !user.respond_to?(:roles)
 
-        Rails.logger.info("The use of user.roles is deprecated.  Please add a method " +
-            "role_symbols to your User model.") if defined?(Rails) and Rails.respond_to?(:logger) and !user.respond_to?(:role_symbols)
+        Rails.logger.info('The use of user.roles is deprecated.  Please add a method ' \
+            'role_symbols to your User model.') if defined?(Rails) && Rails.respond_to?(:logger) && !user.respond_to?(:role_symbols)
 
         roles = user.respond_to?(:role_symbols) ? user.role_symbols : user.roles
 
-        raise AuthorizationUsageError, "User.#{user.respond_to?(:role_symbols) ? 'role_symbols' : 'roles'} " +
-          "doesn't return an Array of Symbols (#{roles.inspect})" \
-              if !roles.is_a?(Array) or (!roles.empty? and !roles[0].is_a?(Symbol))
+        raise AuthorizationUsageError, "User.#{user.respond_to?(:role_symbols) ? 'role_symbols' : 'roles'} " \
+                                       "doesn't return an Array of Symbols (#{roles.inspect})" \
+              if !roles.is_a?(Array) || (!roles.empty? && !roles[0].is_a?(Symbol))
 
         (roles.empty? ? [Authorization.default_role] : roles)
       end
@@ -218,7 +222,13 @@ module Authoreyes
 
       def self.development_reload?
         if Rails.env.development?
-          mod_time = AUTH_DSL_FILES.map { |m| File.mtime(m) rescue Time.at(0) }.flatten.max
+          mod_time = AUTH_DSL_FILES.map do |m|
+            begin
+                                     File.mtime(m)
+                                   rescue
+                                     Time.at(0)
+                                   end
+          end.flatten.max
           @@auth_dsl_last_modified ||= mod_time
           if mod_time > @@auth_dsl_last_modified
             @@auth_dsl_last_modified = mod_time
@@ -230,8 +240,8 @@ module Authoreyes
       # Returns an instance of Engine, which is created if there isn't one
       # yet.  If +dsl_file+ is given, it is passed on to Engine.new and
       # a new instance is always created.
-      def self.instance (dsl_file = nil)
-        if dsl_file or development_reload?
+      def self.instance(dsl_file = nil)
+        if dsl_file || development_reload?
           @@instance = new(dsl_file)
         else
           @@instance ||= new
@@ -240,7 +250,7 @@ module Authoreyes
 
       class AttributeValidator # :nodoc:
         attr_reader :user, :object, :engine, :context, :privilege
-        def initialize (engine, user, object = nil, privilege = nil, context = nil)
+        def initialize(engine, user, object = nil, privilege = nil, context = nil)
           @engine = engine
           @user = user
           @object = object
@@ -248,33 +258,34 @@ module Authoreyes
           @context = context
         end
 
-        def evaluate (value_block)
-          # TODO cache?
+        def evaluate(value_block)
+          # TODO: cache?
           instance_eval(&value_block)
         end
       end
 
       private
+
       def user_roles_privleges_from_options(privilege, options)
         options = {
-          :user => nil,
-          :context => nil,
-          :user_roles => nil
+          user: nil,
+          context: nil,
+          user_roles: nil
         }.merge(options)
         user = options[:user] || Authorization.current_user
         privileges = privilege.is_a?(Array) ? privilege : [privilege]
 
-        raise AuthorizationUsageError, "No user object given (#{user.inspect}) or " +
-          "set through Authorization.current_user" unless user
+        raise AuthorizationUsageError, "No user object given (#{user.inspect}) or " \
+                                       'set through Authorization.current_user' unless user
 
         roles = options[:user_roles] || flatten_roles(roles_for(user))
         privileges = flatten_privileges privileges, options[:context]
         [user, roles, privileges]
       end
 
-      def flatten_roles (roles, flattened_roles = Set.new)
-        # TODO caching?
-        roles.reject {|role| flattened_roles.include?(role)}.each do |role|
+      def flatten_roles(roles, flattened_roles = Set.new)
+        # TODO: caching?
+        roles.reject { |role| flattened_roles.include?(role) }.each do |role|
           flattened_roles << role
           flatten_roles(role_hierarchy[role], flattened_roles) if role_hierarchy[role]
         end
@@ -282,10 +293,10 @@ module Authoreyes
       end
 
       # Returns the privilege hierarchy flattened for given privileges in context.
-      def flatten_privileges (privileges, context = nil, flattened_privileges = Set.new)
-        # TODO caching?
-        raise AuthorizationUsageError, "No context given or inferable from object" unless context
-        privileges.reject {|priv| flattened_privileges.include?(priv)}.each do |priv|
+      def flatten_privileges(privileges, context = nil, flattened_privileges = Set.new)
+        # TODO: caching?
+        raise AuthorizationUsageError, 'No context given or inferable from object' unless context
+        privileges.reject { |priv| flattened_privileges.include?(priv) }.each do |priv|
           flattened_privileges << priv
           flatten_privileges(rev_priv_hierarchy[[priv, nil]], context, flattened_privileges) if rev_priv_hierarchy[[priv, nil]]
           flatten_privileges(rev_priv_hierarchy[[priv, context]], context, flattened_privileges) if rev_priv_hierarchy[[priv, context]]
@@ -293,7 +304,7 @@ module Authoreyes
         flattened_privileges.to_a
       end
 
-      def matching_auth_rules (roles, privileges, context)
+      def matching_auth_rules(roles, privileges, context)
         auth_rules.matching(roles, privileges, context)
       end
     end

@@ -3,7 +3,7 @@ module Authoreyes
     # The PrivilegeReader handles the part of the authorization DSL in
     # a +privileges+ block.  Here, privilege hierarchies are defined.
     class PrivilegesReader
-      # TODO handle privileges with separated context
+      # TODO: handle privileges with separated context
       attr_reader :privileges, :privilege_hierarchy # :nodoc:
 
       def initialize # :nodoc:
@@ -47,7 +47,7 @@ module Authoreyes
       # be used inside a privilege block.
       def includes(*privileges)
         raise DSLError,
-          "includes only in privilege block" if @current_privelege.nil?
+              'includes only in privilege block' if @current_privelege.nil?
         privileges.each do |priv|
           append_privilege priv
           @privilege_hierarchy[@current_privelege] ||= []

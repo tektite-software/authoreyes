@@ -46,13 +46,14 @@ class TestModelsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_test_model
-      @test_model = TestModel.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def test_model_params
-      params.require(:test_model).permit(:title, :body, :user_id)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_test_model
+    @test_model = TestModel.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def test_model_params
+    params.require(:test_model).permit(:title, :body, :user_id)
+  end
 end
