@@ -36,11 +36,23 @@ module Authoreyes
         end
       end
 
+      ActionController::Metal.send(:define_method, :authorization_object) do
+        if params[:id].present?
+          begin
+            controller_name.singularize.capitalize.constantize.find(params[:id])
+          rescue NameError
+            logger.warn "[Authoreyes] Could not interpolate object!"
+          end
+        else
+          nil
+        end
+      end
+
       ActionController::API.send(:define_method, :render_unauthorized) do
         begin
-          permitted_to! action_name
+          permitted_to! action_name, authorization_object
         rescue Authoreyes::Authorization::NotAuthorized => e
-          puts e
+          logger.warn "[Authoreyes] #{e}"
           response_object = ActiveModelSerializers::Model.new()
           response_object.attributes.merge!({
             action: action_name,
@@ -102,7 +114,7 @@ module Authoreyes
 
         result = {:object => object,
           :context => context,
-          :skip_attribute_test => object.nil?,
+          # :skip_attribute_test => object.nil?,
           :bang => bang}.merge(options)
         result[:user] = current_user unless result.key?(:user)
         result

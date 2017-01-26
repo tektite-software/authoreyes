@@ -7,6 +7,9 @@ authorization do
 
   role :user do
     includes :guest
+    has_permission_on :test_models, to: :manage do
+      if_attribute user_id: is { user.id }
+    end
   end
 
   # permissions on other roles, such as
