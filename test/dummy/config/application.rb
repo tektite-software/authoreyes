@@ -3,8 +3,8 @@ require_relative 'boot'
 require 'rails/all'
 
 Bundler.require(*Rails.groups)
-require "authoreyes"
-require "devise"
+require 'authoreyes'
+require 'devise'
 
 module Dummy
   class Application < Rails::Application

@@ -15,7 +15,7 @@ authorization do
   # permissions on other roles, such as
   role :admin do
     includes :user
-   has_permission_on :test_models, to: :manage
+    has_permission_on :test_models, to: :manage
   end
 end
 

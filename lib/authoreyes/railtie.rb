@@ -10,7 +10,7 @@ module Authoreyes
     # +auth_rules_file+ is the path of the authorization rules file.
     config.authoreyes = ActiveSupport::OrderedOptions.new
 
-    initializer 'authoreyes.setup', before: 'authoreyes.engine' do |app|
+    initializer 'authoreyes.setup', before: 'authoreyes.engine' do |_app|
       # Set default Authoreyes options
       default_options = ActiveSupport::OrderedOptions.new
       default_options.auth_rules_file =
@@ -20,7 +20,7 @@ module Authoreyes
       # Validates options
       unless [nil, :whitelist, :blacklist].include? config.authoreyes.mode
         raise InvalidConfigurationOption,
-          "Unrecognized mode.  Valid options are :whitelist and :blacklist"
+              'Unrecognized mode.  Valid options are :whitelist and :blacklist'
       end
 
       # Merge user options with defaults
@@ -28,7 +28,7 @@ module Authoreyes
     end
 
     # Controller integration
-    initializer 'authoreyes.in_controller' do |app|
+    initializer 'authoreyes.in_controller' do |_app|
       ActiveSupport.on_load :action_controller do
         if Rails.application.config.api_only
           before_action :render_unauthorized

@@ -34,7 +34,7 @@ module Authoreyes
     #
     class AuthorizationRulesParser
       attr_reader :roles, :role_hierarchy, :auth_rules,
-        :role_descriptions, :role_titles, :omnipotent_roles # :nodoc:
+                  :role_descriptions, :role_titles, :omnipotent_roles # :nodoc:
 
       def initialize # :nodoc:
         @current_role = nil
@@ -48,7 +48,7 @@ module Authoreyes
         @auth_rules = ::Authoreyes::Authorization::AuthorizationRuleSet.new
       end
 
-      def initialize_copy (from) # :nodoc:
+      def initialize_copy(from) # :nodoc:
         [
           :roles,
           :role_hierarchy,
@@ -61,7 +61,7 @@ module Authoreyes
         end
       end
 
-      def append_role (role, options = {}) # :nodoc:
+      def append_role(role, options = {}) # :nodoc:
         @roles << role unless @roles.include? role
         @role_titles[role] = options[:title] if options[:title]
         @role_descriptions[role] =
@@ -74,7 +74,7 @@ module Authoreyes
       #     has_permissions_on ...
       #   end
       #
-      def role (role, options = {}, &block)
+      def role(role, options = {})
         append_role role, options
         @current_role = role
         yield
@@ -92,8 +92,8 @@ module Authoreyes
       #     has_permission_on :employees, :to => :read
       #   end
       #
-      def includes (*roles)
-        raise DSLError, "includes only in role blocks" if @current_role.nil?
+      def includes(*roles)
+        raise DSLError, 'includes only in role blocks' if @current_role.nil?
         @role_hierarchy[@current_role] ||= []
         @role_hierarchy[@current_role] += roles.flatten
       end
@@ -127,27 +127,27 @@ module Authoreyes
       #   of the has_permission_on block.  May be :+and+ or :+or+.
       #   Defaults to :+or+.
       #
-      def has_permission_on (*args, &block)
+      def has_permission_on(*args)
         options = args.extract_options!
         context = args.flatten
 
-        raise DSLError, "has_permission_on only allowed in role blocks" if @current_role.nil?
-        options = {:to => [], :join_by => :or}.merge(options)
+        raise DSLError, 'has_permission_on only allowed in role blocks' if @current_role.nil?
+        options = { to: [], join_by: :or }.merge(options)
 
         privs = options[:to]
         privs = [privs] unless privs.is_a?(Array)
-        raise DSLError, "has_permission_on either needs a block or :to option" if !block_given? and privs.empty?
+        raise DSLError, 'has_permission_on either needs a block or :to option' if !block_given? && privs.empty?
 
         file, line = file_and_line_number_from_call_stack
         rule = ::Authoreyes::Authorization::AuthorizationRule.new(@current_role, privs, context, options[:join_by],
-                   :source_file => file, :source_line => line)
+                                                                  source_file: file, source_line: line)
         @auth_rules << rule
         if block_given?
           @current_rule = rule
           yield
           raise DSLError, "has_permission_on block
             content specifies no privileges" if rule.privileges.empty?
-          # TODO ensure?
+          # TODO: ensure?
           @current_rule = nil
         end
       end
@@ -157,7 +157,7 @@ module Authoreyes
       #     has_omnipotence
       #   end
       def has_omnipotence
-        raise DSLError, "has_omnipotence only allowed in role blocks" if @current_role.nil?
+        raise DSLError, 'has_omnipotence only allowed in role blocks' if @current_role.nil?
         @omnipotent_roles << @current_role
       end
 
@@ -166,8 +166,8 @@ module Authoreyes
       #     description "To be assigned to administrative personnel"
       #     has_permission_on ...
       #   end
-      def description (text)
-        raise DSLError, "description only allowed in role blocks" if @current_role.nil?
+      def description(text)
+        raise DSLError, 'description only allowed in role blocks' if @current_role.nil?
         role_descriptions[@current_role] = text
       end
 
@@ -176,8 +176,8 @@ module Authoreyes
       #     title "Administrator"
       #     has_permission_on ...
       #   end
-      def title (text)
-        raise DSLError, "title only allowed in role blocks" if @current_role.nil?
+      def title(text)
+        raise DSLError, 'title only allowed in role blocks' if @current_role.nil?
         role_titles[@current_role] = text
       end
 
@@ -189,8 +189,8 @@ module Authoreyes
       #       to :create, :read, :update, :delete
       #     end
       #   end
-      def to (*privs)
-        raise DSLError, "to only allowed in has_permission_on blocks" if @current_rule.nil?
+      def to(*privs)
+        raise DSLError, 'to only allowed in has_permission_on blocks' if @current_rule.nil?
         @current_rule.append_privileges(privs.flatten)
       end
 
@@ -248,8 +248,8 @@ module Authoreyes
       #   if_attribute :type => "special"
       #   if_attribute :id   => [1,2]
       #
-      def if_attribute (attr_conditions_hash)
-        raise DSLError, "if_attribute only in has_permission blocks" if @current_rule.nil?
+      def if_attribute(attr_conditions_hash)
+        raise DSLError, 'if_attribute only in has_permission blocks' if @current_rule.nil?
         parse_attribute_conditions_hash!(attr_conditions_hash)
         @current_rule.append_attribute ::Authoreyes::Authorization::Attribute.new(attr_conditions_hash)
       end
@@ -300,37 +300,37 @@ module Authoreyes
       #     if_permitted_to :read, :home_branch, :context => :branches
       #     if_permitted_to :read, :branch => :main_company, :context => :companies
       #
-      def if_permitted_to (privilege, attr_or_hash = nil, options = {})
-        raise DSLError, "if_permitted_to only in has_permission blocks" if @current_rule.nil?
+      def if_permitted_to(privilege, attr_or_hash = nil, options = {})
+        raise DSLError, 'if_permitted_to only in has_permission blocks' if @current_rule.nil?
         options[:context] ||= attr_or_hash.delete(:context) if attr_or_hash.is_a?(Hash)
         # only :context option in attr_or_hash:
-        attr_or_hash = nil if attr_or_hash.is_a?(Hash) and attr_or_hash.empty?
+        attr_or_hash = nil if attr_or_hash.is_a?(Hash) && attr_or_hash.empty?
         @current_rule.append_attribute ::Authoreyes::Authorization::AttributeWithPermission.new(privilege,
-            attr_or_hash, options[:context])
+                                                                                                attr_or_hash, options[:context])
       end
 
       # In an if_attribute statement, is says that the value has to be
       # met exactly by the if_attribute attribute.  For information on the block
       # argument, see if_attribute.
-      def is (&block)
+      def is(&block)
         [:is, block]
       end
 
       # The negation of is.
-      def is_not (&block)
+      def is_not(&block)
         [:is_not, block]
       end
 
       # In an if_attribute statement, contains says that the value has to be
       # part of the collection specified by the if_attribute attribute.
       # For information on the block argument, see if_attribute.
-      def contains (&block)
+      def contains(&block)
         [:contains, block]
       end
 
       # The negation of contains.  Currently, query rewriting is disabled
       # for does_not_contain.
-      def does_not_contain (&block)
+      def does_not_contain(&block)
         [:does_not_contain, block]
       end
 
@@ -338,51 +338,52 @@ module Authoreyes
       # one of the values has to be part of the collection specified by the
       # if_attribute attribute.  The value block needs to evaluate to an
       # Enumerable.  For information on the block argument, see if_attribute.
-      def intersects_with (&block)
+      def intersects_with(&block)
         [:intersects_with, block]
       end
 
       # In an if_attribute statement, is_in says that the value has to
       # contain the attribute value.
       # For information on the block argument, see if_attribute.
-      def is_in (&block)
+      def is_in(&block)
         [:is_in, block]
       end
 
       # The negation of is_in.
-      def is_not_in (&block)
+      def is_not_in(&block)
         [:is_not_in, block]
       end
 
       # Less than
-      def lt (&block)
+      def lt(&block)
         [:lt, block]
       end
 
       # Less than or equal to
-      def lte (&block)
+      def lte(&block)
         [:lte, block]
       end
 
       # Greater than
-      def gt (&block)
+      def gt(&block)
         [:gt, block]
       end
 
       # Greater than or equal to
-      def gte (&block)
+      def gte(&block)
         [:gte, block]
       end
 
       private
-      def parse_attribute_conditions_hash! (hash)
+
+      def parse_attribute_conditions_hash!(hash)
         merge_hash = {}
         hash.each do |key, value|
           if value.is_a?(Hash)
             parse_attribute_conditions_hash!(value)
           elsif !value.is_a?(Array)
             merge_hash[key] = [:is, proc { value }]
-          elsif value.is_a?(Array) and !value[0].is_a?(Symbol)
+          elsif value.is_a?(Array) && !value[0].is_a?(Symbol)
             merge_hash[key] = [:is_in, proc { value }]
           end
         end
@@ -391,8 +392,8 @@ module Authoreyes
 
       def file_and_line_number_from_call_stack
         caller_parts = caller(2).first.split(':')
-        [caller_parts[0] == "(eval)" ? nil : caller_parts[0],
-          caller_parts[1] && caller_parts[1].to_i]
+        [caller_parts[0] == '(eval)' ? nil : caller_parts[0],
+         caller_parts[1] && caller_parts[1].to_i]
       end
     end
   end

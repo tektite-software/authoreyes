@@ -14,7 +14,6 @@ module Authoreyes
 
       # TODO: Implement this!
       def filter_resource_access(options = {})
-
       end
 
       ActionController::Base.send(:define_method, :redirect_if_unauthorized) do
@@ -41,10 +40,8 @@ module Authoreyes
           begin
             controller_name.singularize.capitalize.constantize.find(params[:id])
           rescue NameError
-            logger.warn "[Authoreyes] Could not interpolate object!"
+            logger.warn '[Authoreyes] Could not interpolate object!'
           end
-        else
-          nil
         end
       end
 
@@ -53,11 +50,9 @@ module Authoreyes
           permitted_to! action_name, authorization_object
         rescue Authoreyes::Authorization::NotAuthorized => e
           logger.warn "[Authoreyes] #{e}"
-          response_object = ActiveModelSerializers::Model.new()
-          response_object.attributes.merge!({
-            action: action_name,
-            controller: controller_name
-          })
+          response_object = ActiveModelSerializers::Model.new
+          response_object.attributes.merge!(action: action_name,
+                                            controller: controller_name)
           response_object.errors.add :action, e
           # Assumes ActiveModel::Serializers is used.
           # If not used, you will have to override `render_unauthorized`
@@ -106,22 +101,21 @@ module Authoreyes
         context = object = nil
         if object_or_sym.nil?
           context = controller_name.to_sym
-        elsif !Authorization.is_a_association_proxy?(object_or_sym) and object_or_sym.is_a?(Symbol)
+        elsif !Authorization.is_a_association_proxy?(object_or_sym) && object_or_sym.is_a?(Symbol)
           context = object_or_sym
         else
           object = object_or_sym
         end
 
-        result = {:object => object,
-          :context => context,
-          # :skip_attribute_test => object.nil?,
-          :bang => bang}.merge(options)
+        result = { object: object,
+                   context: context,
+                   # :skip_attribute_test => object.nil?,
+                   bang: bang }.merge(options)
         result[:user] = current_user unless result.key?(:user)
         result
       end
 
       class_methods do
-
       end
     end
   end

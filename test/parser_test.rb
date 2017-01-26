@@ -3,58 +3,58 @@ require 'test_helper'
 class ParserTest < Minitest::Test
   def test_privileges
     reader = Authoreyes::Parser::DSLParser.new
-    reader.parse %{
+    reader.parse %(
       privileges do
         privilege :test_priv do
           includes :lower_priv
         end
       end
-    }
+    )
     assert_equal 2, reader.privileges_reader.privileges.length
     assert_equal [[:lower_priv, nil]],
-      reader.privileges_reader.privilege_hierarchy[:test_priv]
+                 reader.privileges_reader.privilege_hierarchy[:test_priv]
   end
 
   def test_privileges_with_context
     reader = Authoreyes::Parser::DSLParser.new
-    reader.parse %{
+    reader.parse %(
       privileges do
         privilege :test_priv, :test_context do
           includes :lower_priv
         end
       end
-    }
+    )
     assert_equal [[:lower_priv, :test_context]],
-      reader.privileges_reader.privilege_hierarchy[:test_priv]
+                 reader.privileges_reader.privilege_hierarchy[:test_priv]
   end
 
   def test_privileges_one_line
     reader = Authoreyes::Parser::DSLParser.new
-    reader.parse %{
+    reader.parse %(
       privileges do
         privilege :test_priv, :test_context, :includes => :lower_priv
         privilege :test_priv_2, :test_context, :includes => [:lower_priv]
         privilege :test_priv_3, :includes => [:lower_priv]
       end
-    }
+    )
     assert_equal [[:lower_priv, :test_context]],
-      reader.privileges_reader.privilege_hierarchy[:test_priv]
+                 reader.privileges_reader.privilege_hierarchy[:test_priv]
     assert_equal [[:lower_priv, :test_context]],
-      reader.privileges_reader.privilege_hierarchy[:test_priv_2]
+                 reader.privileges_reader.privilege_hierarchy[:test_priv_2]
     assert_equal [[:lower_priv, nil]],
-      reader.privileges_reader.privilege_hierarchy[:test_priv_3]
+                 reader.privileges_reader.privilege_hierarchy[:test_priv_3]
   end
 
   def test_auth_role
     reader = Authoreyes::Parser::DSLParser.new
-    reader.parse %{
+    reader.parse %(
       authorization do
         role :test_role do
           includes :lesser_role
           has_permission_on :items, :to => :read
         end
       end
-    }
+    )
     assert_equal 1, reader.auth_rules_reader.roles.length
     assert_equal [:lesser_role], reader.auth_rules_reader.role_hierarchy[:test_role]
     assert_equal 1, reader.auth_rules_reader.auth_rules.length
