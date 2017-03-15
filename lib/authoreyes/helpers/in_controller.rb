@@ -38,7 +38,7 @@ module Authoreyes
       ActionController::Metal.send(:define_method, :authorization_object) do
         if params[:id].present?
           begin
-            controller_name.singularize.camelcase.capitalize.constantize.find(params[:id])
+            controller_name.singularize.camelcase.constantize.find(params[:id])
           rescue NameError
             logger.warn '[Authoreyes] Could not interpolate object!'
           end
