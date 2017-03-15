@@ -21,7 +21,7 @@ module Authoreyes
           permitted_to! action_name
         rescue Authoreyes::Authorization::NotAuthorized => e
           session[:request_unauthorized] = true
-          puts e
+          Rails.logger.warn "[Authoreyes] #{e}"
           redirect_back fallback_location: root_path,
                         status: :found,
                         alert: 'You are not allowed to do that.'
@@ -38,7 +38,7 @@ module Authoreyes
       ActionController::Metal.send(:define_method, :authorization_object) do
         if params[:id].present?
           begin
-            controller_name.singularize.capitalize.constantize.find(params[:id])
+            controller_name.singularize.camelcase.capitalize.constantize.find(params[:id])
           rescue NameError
             logger.warn '[Authoreyes] Could not interpolate object!'
           end

@@ -10,7 +10,8 @@ module Authoreyes
     config.after_initialize do
       require 'authoreyes/helpers/in_controller'
 
-      # Include Controller helpers
+      # Include Controller helpers not already sent to specific parts
+      # of ActionController (e.g., permitted_to?, etc.)
       ActionController::Metal.include Authoreyes::Helpers::InController
     end
   end

@@ -3,8 +3,6 @@
 [![Gem Version](https://badge.fury.io/rb/authoreyes.svg)](https://badge.fury.io/rb/authoreyes) [![Build Status](https://travis-ci.org/tektite-software/authoreyes.svg?branch=master)](https://travis-ci.org/tektite-software/authoreyes) [![Dependency Status](https://gemnasium.com/badges/github.com/tektite-software/authoreyes.svg)](https://gemnasium.com/github.com/tektite-software/authoreyes)
  [![Code Climate](https://codeclimate.com/github/tektite-software/authoreyes/badges/gpa.svg)](https://codeclimate.com/github/tektite-software/authoreyes) [![Test Coverage](https://codeclimate.com/github/tektite-software/authoreyes/badges/coverage.svg)](https://codeclimate.com/github/tektite-software/authoreyes/coverage) [![Inline docs](http://inch-ci.org/github/tektite-software/authoreyes.svg?branch=master)](http://inch-ci.org/github/tektite-software/authoreyes)
 
-#### Warning! This gem is an alpha!
-
 _Authoreyes_ (pronounced "authorize") is intended to be a modern, Rails 5 compatible replacement for [Declarative Authorization](https://github.com/stffn/declarative_authorization/).
 
 ## Installation
@@ -27,11 +25,12 @@ Or install it yourself as:
 
 For Rails authorization in Rails versions 4 and below, please use [Declarative Authorization](https://github.com/stffn/declarative_authorization) or one of its forks.
 
-__Warning! This gem is not finished!__ Although authorization functionality _does_ work, you will need to do a few things to actually use it in your application...
+__Warning! This gem is not finished!__
 
 At this point, to use Authoreyes, you must do the following:
-  1. Add an `authorization_rules.rb` file.  See the included one for an example.
+  1. Add an `authorization_rules.rb` file.  See the included one for an example.  The syntax is the same as Declarative Authorization, so you can look at their examples too.
   2. Define privileges for every single action you want to be accessed.  As of now, Authoreyes has only one mode: authorize everything.
+  3. Done!  Authoreyes will do its job.
 
 If you want to customize authorization behavior, in your ApplicationController override Authoreyes's `redirect_if_unauthorized` before_action and `set_unauthorized_status_code` after_action.  See `lib/authoreyes/helpers/in_controller` for details.
 
