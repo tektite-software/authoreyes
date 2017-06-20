@@ -8,10 +8,13 @@ module Authoreyes
   class Railtie
     # Require helpers after Rails initialization
     config.after_initialize do
-      require 'authoreyes/helpers/in_controller'
+      require 'authoreyes/helpers'
 
       # Include Controller helpers
       ActionController::Metal.include Authoreyes::Helpers::InController
+
+      # Include User helpers
+      ActiveRecord::Base.include Authoreyes::Helpers::InUser
     end
   end
 end
