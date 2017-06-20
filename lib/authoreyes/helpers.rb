@@ -1,5 +1,6 @@
 require 'authoreyes/helpers/in_controller'
 require 'authoreyes/helpers/in_user'
+require 'authoreyes/helpers/in_model'
 
 module Authoreyes
   # This module contains all helpers for views, controllers, and models.

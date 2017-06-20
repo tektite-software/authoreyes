@@ -15,6 +15,9 @@ module Authoreyes
 
       # Include User helpers
       ActiveRecord::Base.include Authoreyes::Helpers::InUser
+
+      # Include Model helpers
+      ActiveRecord::Base.include Authoreyes::Helpers::InModel
     end
   end
 end
