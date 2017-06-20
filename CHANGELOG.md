@@ -1,7 +1,7 @@
 * __v0.3.0__
   * Update README to display more comprehensive documentation and quick-start
   * Add `privileges_on` and `guest_privileges_on` helpers
-  * Add `InUser` helper module to simplify setup
+  * Add `InUser` helper module with `is_authoreyes_user` method to simplify setup
 
 * __v0.2.2__
   * Fix some bugs preventing controllers named certain ways not to behave properly

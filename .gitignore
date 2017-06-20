@@ -7,7 +7,7 @@
 /pkg/
 /spec/reports/
 /tmp/
-/test/dummy/tmp/
-/test/dummy/log/
+/test/dummy/tmp/**
+/test/dummy/log/**
 *.gem
 *.log
