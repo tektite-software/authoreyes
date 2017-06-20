@@ -74,7 +74,7 @@ module Authoreyes
               end
             elsif role.kind_of?(String)
               return [role.underscore.downcase.to_sym]
-            elsif role.kind_of(Symbol)
+            elsif role.kind_of?(Symbol)
               return [role]
             elsif role.kind_of?(Array)
               return role.map { |r| r.to_s.underscore.downcase.to_sym }

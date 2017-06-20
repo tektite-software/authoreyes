@@ -29,6 +29,7 @@ Minitest::Reporters.use! [
 Minitest.backtrace_filter = Minitest::BacktraceFilter.new
 
 Rails::TestUnitReporter.executable = 'bin/test'
+Rails.application.load_seed
 
 # Load fixtures from the engine
 if ActiveSupport::TestCase.respond_to?(:fixture_path=)
