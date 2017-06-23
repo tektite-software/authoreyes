@@ -86,6 +86,26 @@ class ParserTest < Minitest::Test
     )
   end
 
+  def test_auth_role_permit_on_alt_syntax
+    reader = Authoreyes::Parser::DSLParser.new
+    reader.parse %(
+      authorization do
+        role :test_role do
+          has_permission_on :test_context, to: :manage do
+            if_attribute test_attr: is { user.test_attr }
+          end
+        end
+      end
+    )
+    assert_equal 1, reader.auth_rules_reader.roles.length
+    assert_equal 1, reader.auth_rules_reader.auth_rules.length
+    assert reader.auth_rules_reader.auth_rules[0].matches?(
+      :test_role,
+      [:manage],
+      :test_context
+    )
+  end
+
   def test_permit_block
     reader = Authoreyes::Parser::DSLParser.new
     reader.parse %(

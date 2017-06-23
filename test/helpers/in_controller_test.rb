@@ -3,6 +3,7 @@ require 'test_helper'
 describe Authoreyes::Helpers::InController do
   admin_user = FactoryGirl.build(:user, role: FactoryGirl.build(:admin_role))
   normal_user = FactoryGirl.build(:user, role: FactoryGirl.build(:role))
+  test_model = FactoryGirl.build(:test_model)
   normal_user_test_model = FactoryGirl.build(:test_model, user: normal_user)
 
   describe 'functionality added to ActionController::Metal' do

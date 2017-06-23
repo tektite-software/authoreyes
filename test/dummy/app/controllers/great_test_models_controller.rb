@@ -1,0 +1,2 @@
+class GreatTestModelsController < ApplicationController
+end

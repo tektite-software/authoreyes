@@ -1,7 +1,20 @@
 require 'test_helper'
 
 describe Authoreyes::Authorization do
+  admin_user = FactoryGirl.build(:user, role: FactoryGirl.build(:admin_role))
+  normal_user = FactoryGirl.build(:user, role: FactoryGirl.build(:role))
+  test_model = FactoryGirl.build(:test_model)
+  normal_user_test_model = FactoryGirl.build(:test_model, user: normal_user)
+  grand_test_model = FactoryGirl.build(:grand_test_model, user: normal_user)
+  great_test_model = FactoryGirl.build(:great_test_model, grand_test_model: grand_test_model)
+
   describe 'the Authorization engine initialized for Rails' do
+  end
+
+  describe 'if_attribute' do
+    it 'should follow associations' do
+      normal_user.privileges_on(great_test_model).must_equal({:manage=>true, :create=>true, :read=>true, :update=>true, :delete=>true, :index=>true, :show=>true, :new=>true, :edit=>true, :destroy=>true})
+    end
   end
 end
 

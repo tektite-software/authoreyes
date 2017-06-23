@@ -10,6 +10,9 @@ authorization do
     has_permission_on :test_models, to: :manage do
       if_attribute user_id: is { user.id }
     end
+    has_permission_on :great_test_models, to: :manage do
+      if_attribute grand_test_model: { user_id: is { user.id } }
+    end
   end
 
   # permissions on other roles, such as

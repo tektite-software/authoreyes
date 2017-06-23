@@ -10,7 +10,29 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170620153544) do
+ActiveRecord::Schema.define(version: 20170623130910) do
+
+  create_table "grand_test_models", force: :cascade do |t|
+    t.string   "title"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+    t.integer  "great_test_model_id"
+    t.integer  "user_id"
+  end
+
+  create_table "great_test_models", force: :cascade do |t|
+    t.string   "title"
+    t.integer  "grand_test_model_id"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
+  end
+
+  create_table "nested_test_models", force: :cascade do |t|
+    t.integer  "test_model_id"
+    t.string   "title"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+  end
 
   create_table "roles", force: :cascade do |t|
     t.string   "title"

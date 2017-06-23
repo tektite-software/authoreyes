@@ -1,0 +1,2 @@
+class GrandTestModelsController < ApplicationController
+end
