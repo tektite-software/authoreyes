@@ -29,6 +29,16 @@ module Authoreyes
 
     # Controller integration
     initializer 'authoreyes.in_controller' do |_app|
+      # Adds render_unauthorized to API ActionController::Base for support
+      # of development tools such as Graphiql
+      # TODO: Perhaps handle this more gracefully
+      if Rails.application.config.api_only
+        ActionController::Base.send(:define_method, :render_unauthorized) do
+          raise Authoreyes::Authorization::NotAuthorized
+        end
+      end
+
+      # Set before actions
       ActiveSupport.on_load :action_controller do
         if Rails.application.config.api_only
           before_action :render_unauthorized
