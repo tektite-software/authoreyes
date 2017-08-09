@@ -9,5 +9,8 @@
 /tmp/
 /test/dummy/tmp/**
 /test/dummy/log/**
+*.sqlite3
 *.gem
 *.log
+.rvmrc
+.ruby-version
