@@ -34,7 +34,7 @@ module Authoreyes
       # TODO: Perhaps handle this more gracefully
       if Rails.application.config.api_only
         ActionController::Base.send(:define_method, :render_unauthorized) do
-          raise Authoreyes::Authorization::NotAuthorized
+          permitted_to! action_name, authorization_object
         end
       end
 
