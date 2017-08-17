@@ -98,7 +98,11 @@ module Authoreyes
 
       # Create hash of options to be used with ENGINE's permit methods
       def options_for_permit(object_or_sym = nil, options = {}, bang = true)
-        current_user = current_user || nil
+        begin
+          current_user = current_user || self.current_user || nil
+        rescue
+          current_user = nil
+        end
 
         context = object = nil
         if object_or_sym.nil?
