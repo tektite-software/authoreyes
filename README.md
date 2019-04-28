@@ -72,14 +72,16 @@ Override `redirect_if_unauthorized` in controller, and you can pass the roles by
 
 ```ruby
 class RolesController < ApplicationController
-  begin
-    permitted_to! action_name, nil, {user_roles: [:foo, :bar]}
-  rescue Authoreyes::Authorization::NotAuthorized => e
-    session[:request_unauthorized] = true
-    Rails.logger.warn "[Authoreyes] #{e}"
-    redirect_back fallback_location: root_path,
-                  status: :found,
-                  alert: 'You are not allowed to do that.'
+  def redirect_if_unauthorized
+    begin
+      permitted_to! action_name, nil, {user_roles: [:foo, :bar]}
+    rescue Authoreyes::Authorization::NotAuthorized => e
+      session[:request_unauthorized] = true
+      Rails.logger.warn "[Authoreyes] #{e}"
+      redirect_back fallback_location: root_path,
+                    status: :found,
+                    alert: 'You are not allowed to do that.'
+    end
   end
 end
 ```
