@@ -36,11 +36,11 @@ If you want to customize authorization behavior, in your ApplicationController o
 
 ## Customization
 
-1. Skip authoreyes or customize authorization behavior on particular controller.
+### 1. Skip authoreyes or customize authorization behavior on particular controller
 
 Override `redirect_if_unauthorized` in controller you want to customize.
 
-```
+```ruby
 class SkipsController < ApplicationController
   # If you want to skip authoreyes and do nothing,
   # just override and do nothing
@@ -49,7 +49,7 @@ class SkipsController < ApplicationController
 end
 ```
 
-```
+```ruby
 class CustomizationController < ApplicationController
   # You can control whether the role is checked in some conditions
   def redirect_if_unauthorized
@@ -66,11 +66,11 @@ class CustomizationController < ApplicationController
 end
 ```
 
-2. Pass any roles you want.
+### 2. Pass any roles you want
 
 Override `redirect_if_unauthorized` in controller, and you can pass the roles by using `user_roles` option.
 
-```
+```ruby
 class RolesController < ApplicationController
   begin
     permitted_to! action_name, nil, {user_roles: [:foo, :bar]}
