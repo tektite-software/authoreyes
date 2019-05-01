@@ -34,6 +34,58 @@ At this point, to use Authoreyes, you must do the following:
 
 If you want to customize authorization behavior, in your ApplicationController override Authoreyes's `redirect_if_unauthorized` before_action and `set_unauthorized_status_code` after_action.  See `lib/authoreyes/helpers/in_controller` for details.
 
+## Customization
+
+### 1. Skip authoreyes or customize authorization behavior on particular controller
+
+Override `redirect_if_unauthorized` in controller you want to customize.
+
+```ruby
+class SkipsController < ApplicationController
+  # If you want to skip authoreyes and do nothing,
+  # just override and do nothing
+  def redirect_if_unauthorized
+  end
+end
+```
+
+```ruby
+class CustomizationController < ApplicationController
+  # You can control whether the role is checked in some conditions
+  def redirect_if_unauthorized
+    begin
+      some_conditions ? permitted_to!(action_name) : nil
+    rescue Authoreyes::Authorization::NotAuthorized => e
+      session[:request_unauthorized] = true
+      Rails.logger.warn "[Authoreyes] #{e}"
+      redirect_back fallback_location: root_path,
+                    status: :found,
+                    alert: 'You are not allowed to do that.'
+    end
+  end
+end
+```
+
+### 2. Pass any roles you want
+
+Override `redirect_if_unauthorized` in controller, and you can pass the roles by using `user_roles` option.
+
+```ruby
+class RolesController < ApplicationController
+  def redirect_if_unauthorized
+    begin
+      permitted_to! action_name, nil, {user_roles: [:foo, :bar]}
+    rescue Authoreyes::Authorization::NotAuthorized => e
+      session[:request_unauthorized] = true
+      Rails.logger.warn "[Authoreyes] #{e}"
+      redirect_back fallback_location: root_path,
+                    status: :found,
+                    alert: 'You are not allowed to do that.'
+    end
+  end
+end
+```
+
 ## Contributing
 
 Bug reports and pull requests are welcome on GitHub at https://github.com/tektite-software/authoreyes.
